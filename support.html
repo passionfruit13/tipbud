@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TipBud Support</title>
+<meta name="description" content="Help for TipBud — the server tip tracker. Logging shifts, tip-out rules, CSV import and export, iCloud backup, widget, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --brass-ink: #7D5810;
+    --cream: #F6F1E9;
+    --ink: #1A1516;
+    --muted: #6B5F55;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    border-top: 6px solid var(--oxblood);
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 40px 24px 72px; }
+  header { margin-bottom: 44px; }
+  .wordmark {
+    font-weight: 800; font-size: 28px; letter-spacing: -0.5px;
+    color: var(--oxblood); text-decoration: none;
+  }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 14px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.8px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--brass-ink); font-weight: 700; }
+  h2 {
+    font-weight: 700; font-size: 13px; letter-spacing: 2.2px; text-transform: uppercase;
+    color: var(--brass-ink); margin: 48px 0 6px;
+  }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p { margin: 8px 0; }
+  .a { color: #3d3630; }
+  .path { font-weight: 700; color: var(--oxblood); white-space: nowrap; }
+  a { color: var(--oxblood); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: #fff; border-radius: 16px;
+    border: 1px solid #e7ddcf;
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid #e7ddcf;
+           color: var(--muted); font-size: 14px; }
+  footer a { color: var(--muted); }
+  small.fine { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="wordmark" href="./">tipbud</a>
+  <div class="rule"></div>
+  <h1>Support</h1>
+  <p class="lede">TipBud logs a shift in about ten seconds and shows what you really <strong>took home</strong> — wages + tips − tip-outs. One purchase, no subscription, and a history that survives anything.</p>
+</header>
+
+<h2>Logging shifts</h2>
+
+<h3>How do I log a shift?</h3>
+<p class="a">Home tab → <span class="path">Log tonight</span>. Pick the job, enter hours (or start &amp; end times), cash tips, card tips, and sales — tip-outs are computed from your rules automatically. TipBud learns your patterns: it pre-fills your usual Saturday, and you just fix the numbers.</p>
+
+<h3>How is my hourly rate calculated?</h3>
+<p class="a">(Hourly wage × hours + tips − tip-outs) ÷ hours. It's your true rate — after tip-outs, including wages.</p>
+
+<h3>How do I set up tip-out rules?</h3>
+<p class="a">Settings → <span class="path">Jobs &amp; Wages</span> → your job → <span class="path">Add Tip-Out Rule</span> (for example: Busser, 2% of sales). Every new shift computes tip-outs from your rules, and you can always override a single shift. You can also open the rules right from the shift entry sheet.</p>
+
+<h3>Where do I see my month?</h3>
+<p class="a">The Shifts tab shows your month on a calendar, night by night — tap any day for the breakdown, or switch to a week view. The Insights tab has your week trend, day-of-week averages, and cash vs card split.</p>
+
+<h2>Widget &amp; notifications</h2>
+
+<h3>How do I add the widget?</h3>
+<p class="a">Press and hold your Home Screen → <span class="path">Edit</span> → <span class="path">Add Widget</span> → search TipBud. It shows your last shift and your trailing week. If it reads "No shifts yet" right after installing, open the app once so the widget can see your data.</p>
+
+<h3>What are the notifications?</h3>
+<p class="a">Two, both off by default: a <span class="path">Weekly recap</span> of what your closed pay week paid (set your week start in Settings → Your week), and a <span class="path">Best-day heads-up</span> for the weekday that pays you best. Turn them on in Settings → Notifications. They're computed on your phone from your own history — nothing is sent anywhere.</p>
+
+<h2>Sharing &amp; privacy</h2>
+
+<h3>How do I share a night?</h3>
+<p class="a">Open a shift → <span class="path">Share</span>. You get a clean card for the group chat, with a <span class="path">$ hidden</span> toggle that shows the shape of the night without the dollars. <span class="path">Save Image</span> asks for add-only access to your photo library — TipBud can add that one image and nothing else.</p>
+
+<h3>Can I lock the app?</h3>
+<p class="a">Settings → Privacy → <span class="path">App Lock</span>. TipBud then requires Face ID or your passcode to open. Your income stays your business.</p>
+
+<h3>Name and appearance</h3>
+<p class="a">Settings → <span class="path">Personal</span> — add an optional first name for the Home greeting (it stays on your phone) and choose light, dark, or system appearance.</p>
+
+<h2>Your data</h2>
+
+<h3>Is my data backed up?</h3>
+<p class="a">Two ways, both included: private iCloud sync (Settings → <span class="path">Backup &amp; sync</span> — no account needed, invisible to us) and manual backup files (Settings → <span class="path">Back Up to File…</span>), which you can restore on any device with <span class="path">Restore from Backup…</span>.</p>
+
+<h3>How do I move my history from another app?</h3>
+<p class="a">Export a CSV from your old app, save it to Files, then in TipBud: Settings → <span class="path">Import CSV</span>. Columns are matched automatically and you can adjust the mapping before importing. Imported shifts never use up your free-shift trial.</p>
+
+<h3>Does TipBud help with the U.S. tip deduction?</h3>
+<p class="a">TipBud keeps the daily tip log the IRS expects for the U.S. federal tip deduction (2025–2028), and Settings → <span class="path">Export CSV…</span> gives you a spreadsheet of every shift, any time. TipBud isn't tax advice — bring the export to your tax preparer.</p>
+
+<h3>The currency symbol is wrong.</h3>
+<p class="a">Settings → <span class="path">Currency</span> — pick yours. It changes how amounts are shown; your numbers are never converted.</p>
+
+<h2>Purchase</h2>
+
+<h3>What's free and what's paid?</h3>
+<p class="a">Your first 30 hand-logged shifts include every feature, nothing held back. After that, a single $19.99 purchase unlocks unlimited shifts forever — no subscription, no ads. Your history stays viewable and exportable even if you never buy.</p>
+
+<h3>I bought it on my old phone — how do I unlock my new one?</h3>
+<p class="a">Settings → <span class="path">Restore Purchases</span> (same Apple Account). Free, always. Refunds are handled by Apple at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
+
+<div class="contact">
+  <h2>Still stuck?</h2>
+  <p>Email <a href="mailto:shakti.thakran@outlook.com"><strong>shakti.thakran@outlook.com</strong></a> — I read everything, usually within a day.</p>
+</div>
+
+<footer>
+  <p>TipBud — no ads, no account, private by design. <a href="privacy">Privacy policy</a></p>
+  <p><small class="fine">© 2026 Shakti Thakran</small></p>
+</footer>
+
+</div>
+</body>
+</html>

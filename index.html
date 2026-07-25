@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TipBud — Server Tip Tracker</title>
+<meta name="description" content="TipBud logs a shift in about ten seconds and shows what you really took home — wages + tips − tip-outs. No ads, no account, private by design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --cream: #F6F1E9;
+    --ink: #F5EFE9;
+    --muted: #B8B0A8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: #121011;
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    border-top: 6px solid var(--oxblood);
+    text-align: center;
+  }
+  .wrap { max-width: 560px; padding: 48px 24px; }
+  .rule { width: 56px; height: 4px; background: var(--oxblood); margin: 0 auto 22px; border-radius: 2px; }
+  .wordmark { font-weight: 800; font-size: 44px; letter-spacing: -1px; color: var(--cream); }
+  h1 { font-weight: 800; font-size: 30px; letter-spacing: -0.5px; margin-top: 26px; line-height: 1.2; }
+  h1 em { font-style: normal; color: var(--brass); }
+  p { color: var(--muted); font-size: 17px; margin-top: 14px; line-height: 1.6; }
+  nav { margin-top: 40px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--cream); text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 12px 26px; border: 1.5px solid #3a3335; border-radius: 999px;
+  }
+  nav a:hover { border-color: var(--brass); color: var(--brass); }
+  footer { margin-top: 44px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rule"></div>
+  <div class="wordmark">tipbud</div>
+  <h1>Know what you <em>took home</em></h1>
+  <p>A tip tracker for servers, bartenders, and anyone who works for tips. Log a shift in about ten seconds, see your true hourly rate after tip-outs — and keep a history that survives anything. No ads, no account, private by design.</p>
+  <nav>
+    <a href="support">Support</a>
+    <a href="privacy">Privacy</a>
+  </nav>
+  <footer>© 2026 Shakti Thakran</footer>
+</div>
+</body>
+</html>
