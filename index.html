@@ -3,55 +3,469 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TipBud — Server Tip Tracker</title>
-<meta name="description" content="TipBud logs a shift in about ten seconds and shows what you really took home — wages + tips − tip-outs. No ads, no account, private by design.">
+<title>TipBud — Know what you took home | Server Tip Tracker for iPhone</title>
+<meta name="description" content="TipBud logs a shift in about ten seconds and shows your true hourly rate — wages + tips − tip-outs. For servers and bartenders. No ads, no account, no subscription.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TipBud — Know what you took home">
+<meta property="og:description" content="A tip tracker for servers and bartenders. Ten-second logging, true hourly rate after tip-outs, a history that survives anything. $19.99 once — never a subscription.">
+<meta property="og:image" content="https://passionfruit13.github.io/tipbud/img/og.png">
+<meta property="og:url" content="https://passionfruit13.github.io/tipbud/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --oxblood: #8E1F2C;
+    --oxblood-deep: #6E1621;
     --brass: #E8B54B;
+    --brass-ink: #7D5810;
     --cream: #F6F1E9;
-    --ink: #F5EFE9;
-    --muted: #B8B0A8;
+    --night: #121011;
+    --night-soft: #1C191A;
+    --ink: #1A1516;
+    --muted-dark: #B8B0A8;   /* secondary on dark */
+    --muted-light: #6B5F55;  /* secondary on cream */
+    --hairline-dark: #322C2E;
+    --hairline-light: #E7DDCF;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: "Archivo", -apple-system, sans-serif;
-    background: #121011;
-    color: var(--ink);
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    border-top: 6px solid var(--oxblood);
-    text-align: center;
+    background: var(--night);
+    color: var(--cream);
+    line-height: 1.6;
+    font-size: 17px;
   }
-  .wrap { max-width: 560px; padding: 48px 24px; }
-  .rule { width: 56px; height: 4px; background: var(--oxblood); margin: 0 auto 22px; border-radius: 2px; }
-  .wordmark { font-weight: 800; font-size: 44px; letter-spacing: -1px; color: var(--cream); }
-  h1 { font-weight: 800; font-size: 30px; letter-spacing: -0.5px; margin-top: 26px; line-height: 1.2; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .money { font-variant-numeric: tabular-nums; }
+
+  /* ---------- top bar ---------- */
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 22px; padding-bottom: 22px;
+  }
+  .wordmark {
+    font-weight: 800; font-size: 24px; letter-spacing: -0.5px;
+    color: var(--cream); text-decoration: none;
+  }
+  .topbar nav { display: flex; align-items: center; gap: 26px; font-size: 15px; font-weight: 500; }
+  .topbar nav a { color: var(--muted-dark); text-decoration: none; }
+  .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--brass); }
+  .topbar .chip {
+    color: var(--night); background: var(--brass); font-weight: 700;
+    padding: 9px 18px; border-radius: 999px;
+  }
+  .topbar .chip:hover, .topbar .chip:focus-visible { color: var(--night); background: #F2C560; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 64px 0 0; overflow: hidden; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center;
+  }
+  .kicker {
+    font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--brass);
+  }
+  h1 {
+    font-weight: 800; font-size: clamp(44px, 6vw, 72px); line-height: 1.02;
+    letter-spacing: -1.5px; margin-top: 18px;
+  }
   h1 em { font-style: normal; color: var(--brass); }
-  p { color: var(--muted); font-size: 17px; margin-top: 14px; line-height: 1.6; }
-  nav { margin-top: 40px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  nav a {
-    color: var(--cream); text-decoration: none; font-weight: 700; font-size: 15px;
-    padding: 12px 26px; border: 1.5px solid #3a3335; border-radius: 999px;
+  .hero-sub {
+    color: var(--muted-dark); font-size: 19px; margin-top: 22px; max-width: 34em;
   }
-  nav a:hover { border-color: var(--brass); color: var(--brass); }
-  footer { margin-top: 44px; color: var(--muted); font-size: 13px; }
+  .cta-row { margin-top: 34px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  /* LAUNCH DAY: replace href="#get" with the App Store URL, keep the id. */
+  .cta {
+    display: inline-block; background: var(--brass); color: var(--night);
+    font-weight: 800; font-size: 17px; text-decoration: none;
+    padding: 16px 30px; border-radius: 999px;
+    transition: transform 120ms ease, background 120ms ease;
+  }
+  .cta:hover, .cta:focus-visible { background: #F2C560; transform: translateY(-1px); }
+  .cta-fine { color: var(--muted-dark); font-size: 14px; }
+  .phone {
+    border-radius: 46px; border: 10px solid #26221f; background: #26221f;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.55);
+    overflow: hidden; max-width: 380px; margin: 0 auto;
+  }
+  .hero .phone { margin-bottom: -120px; }
+
+  /* ---------- the check (signature) ---------- */
+  .check-band { background: var(--night-soft); padding: 96px 0 72px; margin-top: 88px;
+                border-top: 1px solid var(--hairline-dark); }
+  .check {
+    max-width: 560px; margin: 0 auto;
+  }
+  .check-title {
+    font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--muted-dark); text-align: center; margin-bottom: 26px;
+  }
+  .ledger-row {
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: 20px; font-weight: 500; padding: 9px 0;
+  }
+  .ledger-row .dots { flex: 1; border-bottom: 2px dotted #4A4244; transform: translateY(-5px); }
+  .ledger-row .val { font-weight: 700; white-space: nowrap; }
+  .ledger-row.total { font-size: 26px; font-weight: 800; padding-top: 16px; }
+  .ledger-row.total .val { color: var(--brass); }
+  .ledger-row.out .val { color: #D98B6C; }
+  .check-note { text-align: center; color: var(--muted-dark); margin-top: 26px; font-size: 16px; }
+  .check-note strong { color: var(--cream); font-weight: 700; }
+
+  /* ---------- feature sections ---------- */
+  .features { background: var(--cream); color: var(--ink); padding: 96px 0 40px; }
+  .feature {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    padding: 56px 0;
+  }
+  .feature + .feature { border-top: 1px solid var(--hairline-light); }
+  .feature.flip .feature-copy { order: 2; }
+  .eyebrow-ledger {
+    display: flex; align-items: baseline; gap: 10px; max-width: 300px;
+    font-size: 13px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--brass-ink);
+  }
+  .eyebrow-ledger .dots { flex: 1; border-bottom: 2px dotted #CBBFA9; transform: translateY(-3px); }
+  .feature h2 {
+    font-weight: 800; font-size: clamp(30px, 3.4vw, 40px); line-height: 1.08;
+    letter-spacing: -0.8px; color: var(--oxblood); margin-top: 14px;
+  }
+  .feature p { color: #3D3630; margin-top: 16px; max-width: 32em; }
+  .feature p strong { color: var(--ink); }
+  .feature .phone { max-width: 330px; border-color: #17191d; background: #17191d;
+                    box-shadow: 0 30px 60px rgba(26,21,22,0.22); }
+
+  /* ---------- survives band ---------- */
+  .survives { background: var(--cream); color: var(--ink); padding: 40px 0 96px; }
+  .survives-inner { border-top: 1px solid var(--hairline-light); padding-top: 72px; }
+  .survives h2 { font-weight: 800; font-size: clamp(30px, 3.4vw, 40px); letter-spacing: -0.8px;
+                 color: var(--oxblood); }
+  .survives > .container > .survives-inner > p { color: #3D3630; margin-top: 14px; max-width: 40em; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .pillar { background: #FFFFFF; border: 1px solid var(--hairline-light); border-radius: 18px;
+            padding: 26px; }
+  .pillar h3 { font-size: 18px; font-weight: 700; }
+  .pillar p { color: var(--muted-light); font-size: 15px; margin-top: 8px; }
+
+  /* ---------- privacy band ---------- */
+  .privacy { background: var(--night); padding: 96px 0; }
+  .privacy h2 { font-weight: 800; font-size: clamp(30px, 3.4vw, 40px); letter-spacing: -0.8px; }
+  .privacy h2 em { font-style: normal; color: var(--brass); }
+  .privacy .lead { color: var(--muted-dark); margin-top: 14px; max-width: 40em; }
+  .privacy-rows { margin-top: 40px; max-width: 640px; }
+  .privacy-rows .ledger-row { font-size: 17px; border-bottom: 1px solid var(--hairline-dark); padding: 14px 0; }
+  .privacy-rows .ledger-row .dots { border-bottom: none; }
+  .privacy-rows .val { color: var(--brass); font-weight: 700; }
+
+  /* ---------- tax + included ---------- */
+  .tax { background: var(--cream); color: var(--ink); padding: 96px 0; }
+  .tax-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+  .tax h2 { font-weight: 800; font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.8px; color: var(--oxblood); }
+  .tax p { color: #3D3630; margin-top: 14px; }
+  .tax .fine { color: var(--muted-light); font-size: 14px; margin-top: 12px; }
+  .included h2 { font-weight: 800; font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.8px; color: var(--oxblood); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .chips span {
+    background: #FFFFFF; border: 1px solid var(--hairline-light); border-radius: 999px;
+    padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3D3630;
+  }
+
+  /* ---------- pricing ---------- */
+  .pricing { background: var(--oxblood); padding: 110px 0; text-align: center; }
+  .pricing .eyebrow-ledger { margin: 0 auto; color: var(--brass); justify-content: center; max-width: 240px; }
+  .pricing .eyebrow-ledger .dots { border-color: rgba(246,241,233,0.35); }
+  .price { font-weight: 800; font-size: clamp(60px, 9vw, 104px); letter-spacing: -2px;
+           line-height: 1; margin-top: 26px; }
+  .price small { font-size: 0.42em; letter-spacing: -0.5px; vertical-align: 18%; }
+  .pricing .terms { color: #F0C9A8; max-width: 36em; margin: 26px auto 0; }
+  .pricing .terms strong { color: var(--cream); }
+  .pricing .cta { margin-top: 36px; }
+  .pricing .anchor-line { color: rgba(246,241,233,0.75); font-size: 15px; margin-top: 22px; }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--cream); color: var(--ink); padding: 96px 0; }
+  .faq h2 { font-weight: 800; font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.8px; color: var(--oxblood); }
+  .faq-list { margin-top: 28px; max-width: 720px; }
+  .faq details { border-top: 1px solid var(--hairline-light); }
+  .faq details:last-child { border-bottom: 1px solid var(--hairline-light); }
+  .faq summary {
+    cursor: pointer; font-weight: 700; font-size: 17px; padding: 18px 0;
+    list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--brass-ink); font-size: 22px; font-weight: 500; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { color: #3D3630; padding-bottom: 18px; max-width: 38em; }
+  .faq .more { margin-top: 24px; color: var(--muted-light); }
+  .faq .more a { color: var(--oxblood); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--night); padding: 64px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+                  gap: 32px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted-dark); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 22px; font-size: 15px; }
+  footer nav a { color: var(--muted-dark); text-decoration: none; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--brass); }
+  .footer-legal { color: #6f6862; font-size: 13px; margin-top: 40px; }
+
+  /* ---------- load animation (hero only, one orchestrated moment) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .rise { opacity: 0; transform: translateY(14px); animation: rise 640ms cubic-bezier(.2,.7,.2,1) forwards; }
+    .rise.d1 { animation-delay: 80ms; } .rise.d2 { animation-delay: 160ms; }
+    .rise.d3 { animation-delay: 240ms; } .rise.d4 { animation-delay: 340ms; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-grid, .feature, .tax-grid { grid-template-columns: 1fr; gap: 44px; }
+    .feature.flip .feature-copy { order: 0; }
+    .pillars { grid-template-columns: 1fr; }
+    .hero .phone { margin-bottom: -80px; max-width: 320px; }
+    .check-band { padding-top: 120px; }
+    .topbar nav a.quiet { display: none; }
+    .feature .phone { max-width: 300px; }
+  }
+  @media (max-width: 480px) {
+    .rule-note { display: none; }
+    .ledger-row { font-size: 18px; }
+    .ledger-row.total { font-size: 23px; }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="rule"></div>
-  <div class="wordmark">tipbud</div>
-  <h1>Know what you <em>took home</em></h1>
-  <p>A tip tracker for servers, bartenders, and anyone who works for tips. Log a shift in about ten seconds, see your true hourly rate after tip-outs — and keep a history that survives anything. No ads, no account, private by design.</p>
-  <nav>
-    <a href="support">Support</a>
-    <a href="privacy">Privacy</a>
-  </nav>
-  <footer>© 2026 Shakti Thakran</footer>
-</div>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="wordmark" href="./">tipbud</a>
+    <nav aria-label="Site">
+      <a class="quiet" href="#rate">Features</a>
+      <a class="quiet" href="#privacy">Privacy</a>
+      <a class="quiet" href="#pricing">Pricing</a>
+      <a class="quiet" href="support">Support</a>
+      <a class="chip" href="#pricing">Get TipBud</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="kicker rise">No ads · No account · No subscription</p>
+      <h1 class="rise d1">Know what you <em>took home.</em></h1>
+      <p class="hero-sub rise d2">TipBud logs a shift in about ten seconds and shows your true hourly rate — wages + tips − tip-outs. Built for servers, bartenders, and anyone who works for tips.</p>
+      <div class="cta-row rise d3">
+        <!-- LAUNCH DAY: replace this href with the App Store URL. -->
+        <a class="cta" id="get" href="#pricing">Get TipBud on the App&nbsp;Store</a>
+        <span class="cta-fine">First 30 shifts free · $19.99 once</span>
+      </div>
+    </div>
+    <div class="phone rise d4">
+      <img src="img/home.png" width="900" height="1840"
+           alt="TipBud home screen: Good afternoon, Matilda — last night $334.35 took home, $53.62 an hour over 7.21 hours, with cash, card, and tip-out broken out." fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<section class="check-band" aria-label="How TipBud closes out a night">
+  <div class="container">
+    <div class="check">
+      <p class="check-title">Last night, closed out</p>
+      <div class="ledger-row money"><span>Cash</span><span class="dots"></span><span class="val">$88.66</span></div>
+      <div class="ledger-row money"><span>Card</span><span class="dots"></span><span class="val">$329.00</span></div>
+      <div class="ledger-row money out"><span>Tip-out<span class="rule-note"> — busser 2%, bar 1.5%</span></span><span class="dots"></span><span class="val">−$83.31</span></div>
+      <div class="ledger-row money total"><span>Took home</span><span class="dots"></span><span class="val">$334.35</span></div>
+      <p class="check-note">That's <strong>$53.62 an hour</strong>, not a guess. TipBud does this math every night.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+
+    <div class="feature" id="log">
+      <div class="feature-copy">
+        <p class="eyebrow-ledger"><span>Logging</span><span class="dots"></span><span>~10 sec</span></p>
+        <h2>Logged before you're out the door</h2>
+        <p>Cash, card, sales, hours — and TipBud pre-fills your usual Saturday from your own history, so most nights you just fix the numbers and hit Save.</p>
+        <p>Tip-outs are computed from your rules. <strong>Busser 2%, bar 1.5%?</strong> Set it once per job and every shift does the math for you.</p>
+      </div>
+      <div class="phone"><img src="img/log.png" width="760" height="1553" loading="lazy"
+        alt="TipBud log shift sheet with job, date, start and end times filled in, and a note that fields were pre-filled from your last 8 Saturdays."></div>
+    </div>
+
+    <div class="feature flip" id="rate">
+      <div class="feature-copy">
+        <p class="eyebrow-ledger"><span>Your rate</span><span class="dots"></span><span class="money">$53.62/hr</span></p>
+        <h2>Your true hourly rate</h2>
+        <p>Wages + tips − tip-outs, divided by the hours you actually worked. Per shift, per week, per month — the number your paycheck never tells you.</p>
+        <p>It's how you compare a slow Tuesday double against a slammed Friday close, and know which one was actually worth it.</p>
+      </div>
+      <div class="phone"><img src="img/rate.png" width="760" height="1553" loading="lazy"
+        alt="TipBud shift detail with the hourly rate hero: $53.62 per hour."></div>
+    </div>
+
+    <div class="feature" id="calendar">
+      <div class="feature-copy">
+        <p class="eyebrow-ledger"><span>Your month</span><span class="dots"></span><span>Night by night</span></p>
+        <h2>The whole month on one screen</h2>
+        <p>Every shift on a calendar with the night's take-home under the date. Tap any day for the full breakdown; switch to weeks when that's how your brain works.</p>
+      </div>
+      <div class="phone"><img src="img/calendar.png" width="760" height="1553" loading="lazy"
+        alt="TipBud Shifts tab: July on a month calendar with each worked night's dollars under the date, $4,055.54 total."></div>
+    </div>
+
+    <div class="feature flip" id="insights">
+      <div class="feature-copy">
+        <p class="eyebrow-ledger"><span>Fridays</span><span class="dots"></span><span>≈ 2× Tuesdays</span></p>
+        <h2>See which nights actually pay</h2>
+        <p>Day-of-week averages, an eight-week trend, cash vs card, personal bests. TipBud reads your history and says things like <strong>"Your Fridays are worth about double your Tuesdays."</strong> Pick up shifts accordingly.</p>
+        <p>Optional heads-up notifications, computed on your phone from your own numbers — off by default, always.</p>
+      </div>
+      <div class="phone"><img src="img/insights.png" width="760" height="1553" loading="lazy"
+        alt="TipBud Insights: last 7 days and this month summaries, tips over the last 8 weeks, and average tips by day with Friday the clear peak."></div>
+    </div>
+
+    <div class="feature" id="share">
+      <div class="feature-copy">
+        <p class="eyebrow-ledger"><span>Sharing</span><span class="dots"></span><span>$ optional</span></p>
+        <h2>Share the night, dollars optional</h2>
+        <p>A clean card for the group chat. Show the numbers when it was a great night — or flip on <strong>$ hidden</strong> and share the shape of the night without the dollars.</p>
+      </div>
+      <div class="phone"><img src="img/share.png" width="760" height="1553" loading="lazy"
+        alt="TipBud share sheet: a dark card reading Friday Jul 24, $334.35 took home, with a $-hidden toggle and Share button."></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="survives">
+  <div class="container">
+    <div class="survives-inner">
+      <h2>A history that survives anything</h2>
+      <p>Lost phones, dead batteries, switched apps — the #1 way tip trackers break hearts is losing the record. TipBud is built so yours survives.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Your own iCloud</h3>
+          <p>Private sync through your personal iCloud — no account to create, and technically invisible to us. New phone, same history.</p>
+        </div>
+        <div class="pillar">
+          <h3>Backup files</h3>
+          <p>One tap writes a backup file you can keep anywhere — Files, iCloud Drive, email to yourself — and restore on any device.</p>
+        </div>
+        <div class="pillar">
+          <h3>CSV in, CSV out</h3>
+          <p>Export every shift as a spreadsheet, any time. Switching from another tracker? Import your old history in minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy" id="privacy">
+  <div class="container">
+    <h2>Your income is <em>your business.</em></h2>
+    <p class="lead">TipBud is built so we cannot see your data — there is nothing to breach, sell, or subpoena from us. On the App Store that reads simply: Data Not Collected.</p>
+    <div class="privacy-rows money">
+      <div class="ledger-row"><span>Accounts, logins, emails</span><span class="dots"></span><span class="val">None</span></div>
+      <div class="ledger-row"><span>Analytics &amp; tracking SDKs</span><span class="dots"></span><span class="val">Zero</span></div>
+      <div class="ledger-row"><span>Ads</span><span class="dots"></span><span class="val">Never</span></div>
+      <div class="ledger-row"><span>Where your shifts live</span><span class="dots"></span><span class="val">Your device + your iCloud</span></div>
+      <div class="ledger-row"><span>Face ID App Lock</span><span class="dots"></span><span class="val">Built in</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tax">
+  <div class="container tax-grid">
+    <div>
+      <h2>Tax season, already sorted</h2>
+      <p>The U.S. federal tip deduction (2025–2028) rewards one habit: a daily tip log. TipBud keeps exactly the record the IRS expects, and exports it as a clean CSV whenever your preparer asks.</p>
+      <p class="fine">TipBud isn't tax advice — it's the paperwork, handled.</p>
+    </div>
+    <div class="included">
+      <h2>All of it, included</h2>
+      <div class="chips">
+        <span>Home-screen widget</span>
+        <span>Weekly recap on your pay week</span>
+        <span>Multiple jobs, separate wages</span>
+        <span>Best-day heads-up</span>
+        <span>Cash vs card split</span>
+        <span>Service charges &amp; notes</span>
+        <span>Light or dark</span>
+        <span>Any currency</span>
+        <span>Big-text friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="eyebrow-ledger"><span>The price</span><span class="dots"></span><span>Once</span></p>
+    <p class="price money">$19.99<small>, once.</small></p>
+    <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
+    <!-- LAUNCH DAY: replace this href with the App Store URL. -->
+    <a class="cta" href="mailto:shakti.thakran@outlook.com?subject=Tell%20me%20when%20TipBud%20launches">Coming soon — get launch email</a>
+    <p class="anchor-line">Most tip trackers charge every year. This is once.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2>Fair questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Is my data really private?</summary>
+        <p>Yes — structurally, not just by promise. TipBud has no servers, no accounts, and no analytics. Your shifts live on your phone and, if you turn sync on, in your own private iCloud, which is tied to your Apple Account and technically inaccessible to us.</p>
+      </details>
+      <details>
+        <summary>What happens after my 30 free shifts?</summary>
+        <p>Logging new shifts asks for the one-time unlock. Everything you already logged stays fully viewable and exportable, paid or not — your history is never held hostage.</p>
+      </details>
+      <details>
+        <summary>I already have years of tips in another app.</summary>
+        <p>Bring them. Export a CSV from your old tracker and use Import CSV in TipBud — columns are matched automatically, and imported shifts never count against your free 30.</p>
+      </details>
+      <details>
+        <summary>New phone — do I pay again?</summary>
+        <p>No. The unlock is tied to your Apple Account: tap Restore Purchases on the new phone and you're in. Your history follows via iCloud or a backup file.</p>
+      </details>
+    </div>
+    <p class="more">Something else? <a href="support">Support has the full list</a>, or email <a href="mailto:shakti.thakran@outlook.com">shakti.thakran@outlook.com</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a class="wordmark" href="./">tipbud</a>
+        <p class="footer-tag">Made for closing time.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="support">Support</a>
+        <a href="privacy">Privacy</a>
+        <a href="mailto:shakti.thakran@outlook.com">Email</a>
+      </nav>
+    </div>
+    <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+  </div>
+</footer>
+
 </body>
 </html>
