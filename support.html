@@ -8,58 +8,84 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
   :root {
     --oxblood: #8E1F2C;
     --brass: #E8B54B;
-    --brass-ink: #7D5810;
-    --cream: #F6F1E9;
+    --bg: #F6F1E9;
     --ink: #1A1516;
+    --body: #3D3630;
     --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F5EFE9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: "Archivo", -apple-system, sans-serif;
-    background: var(--cream);
+    background: var(--bg);
     color: var(--ink);
     line-height: 1.65;
     border-top: 6px solid var(--oxblood);
   }
   .wrap { max-width: 680px; margin: 0 auto; padding: 40px 24px 72px; }
   header { margin-bottom: 44px; }
-  .wordmark {
-    font-weight: 800; font-size: 28px; letter-spacing: -0.5px;
-    color: var(--oxblood); text-decoration: none;
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark {
+    width: 36px; height: 36px; border-radius: 9px; background: var(--oxblood);
+    color: #F6F1E9; display: grid; place-items: center;
+    font-weight: 800; font-size: 15px; letter-spacing: -0.5px;
+    box-shadow: inset 0 -8px 14px rgba(0,0,0,0.18);
   }
-  .rule { width: 56px; height: 4px; background: var(--brass); margin: 14px 0 26px; border-radius: 2px; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
   h1 { font-weight: 800; font-size: 40px; line-height: 1.1; letter-spacing: -0.8px; }
+  .date { color: var(--muted); font-size: 15px; margin-top: 10px; }
   .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
-  .lede strong { color: var(--brass-ink); font-weight: 700; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
   h2 {
     font-weight: 700; font-size: 13px; letter-spacing: 2.2px; text-transform: uppercase;
-    color: var(--brass-ink); margin: 48px 0 6px;
+    color: var(--accent-ink); margin: 44px 0 8px;
   }
   h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
-  p { margin: 8px 0; }
-  .a { color: #3d3630; }
-  .path { font-weight: 700; color: var(--oxblood); white-space: nowrap; }
-  a { color: var(--oxblood); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  .path { font-weight: 700; color: var(--head); white-space: nowrap; }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
   .contact {
-    margin-top: 56px; padding: 24px 26px; background: #fff; border-radius: 16px;
-    border: 1px solid #e7ddcf;
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
   }
   .contact h2 { margin-top: 0; }
-  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid #e7ddcf;
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--hair);
            color: var(--muted); font-size: 14px; }
   footer a { color: var(--muted); }
   small.fine { color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <a class="wordmark" href="./">tipbud</a>
+  <a class="brand" href="./"><span class="mark">tb</span><span class="word">tipbud</span></a>
   <div class="rule"></div>
   <h1>Support</h1>
   <p class="lede">TipBud logs a shift in about ten seconds and shows what you really <strong>took home</strong> — wages + tips − tip-outs. One purchase, no subscription, and a history that survives anything.</p>

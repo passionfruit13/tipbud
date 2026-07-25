@@ -51,10 +51,14 @@
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 22px; padding-bottom: 22px;
   }
-  .wordmark {
-    font-weight: 800; font-size: 24px; letter-spacing: -0.5px;
-    color: var(--cream); text-decoration: none;
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark {
+    width: 34px; height: 34px; border-radius: 9px; background: var(--oxblood);
+    color: var(--cream); display: grid; place-items: center;
+    font-weight: 800; font-size: 14px; letter-spacing: -0.5px;
+    box-shadow: inset 0 -8px 14px rgba(0,0,0,0.25);
   }
+  .brand .word { font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: var(--cream); }
   .topbar nav { display: flex; align-items: center; gap: 26px; font-size: 15px; font-weight: 500; }
   .topbar nav a { color: var(--muted-dark); text-decoration: none; }
   .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--brass); }
@@ -245,6 +249,27 @@
   }
   :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
 
+  /* ---------- dark mode: light sections flip; brand-dark bands stay ---------- */
+  @media (prefers-color-scheme: dark) {
+    .features, .survives, .tax, .faq { background: #171415; color: var(--cream); }
+    .feature h2, .survives h2, .tax h2, .included h2, .faq h2 { color: #DA6470; }
+    .feature p, .survives .survives-inner > p, .tax p, .faq details p { color: #CFC7BF; }
+    .feature p strong { color: var(--cream); }
+    .feature + .feature, .survives-inner, .faq details,
+    .faq details:last-child { border-color: var(--hairline-dark); }
+    .eyebrow-ledger { color: var(--brass); }
+    .eyebrow-ledger .dots { border-color: #4A4244; }
+    .pillar, .chips span { background: #221E1F; border-color: var(--hairline-dark); }
+    .pillar h3 { color: var(--cream); }
+    .pillar p, .tax .fine, .faq .more { color: var(--muted-dark); }
+    .chips span { color: #CFC7BF; }
+    .faq summary::after { color: var(--brass); }
+    .faq .more a { color: #DA6470; }
+    .feature .phone { box-shadow: inset 0 0 0 2px #454549, 0 0 0 3px #1b1b1e,
+                      0 0 0 4.5px #56565b, 0 30px 60px rgba(0,0,0,0.5); }
+    .pricing .eyebrow-ledger .dots { border-color: rgba(246,241,233,0.35); }
+  }
+
   /* ---------- responsive ---------- */
   @media (max-width: 900px) {
     .hero-grid, .feature, .tax-grid { grid-template-columns: 1fr; gap: 44px; }
@@ -266,7 +291,7 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a class="wordmark" href="./">tipbud</a>
+    <a class="brand" href="./"><span class="mark">tb</span><span class="word">tipbud</span></a>
     <nav aria-label="Site">
       <a class="quiet" href="#rate">Features</a>
       <a class="quiet" href="#privacy">Privacy</a>
@@ -487,7 +512,7 @@
   <div class="container">
     <div class="footer-inner">
       <div>
-        <a class="wordmark" href="./">tipbud</a>
+        <a class="brand" href="./"><span class="mark">tb</span><span class="word">tipbud</span></a>
         <p class="footer-tag">Made for closing time.</p>
       </div>
       <nav aria-label="Footer">
