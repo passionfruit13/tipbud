@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://passionfruit13.github.io/tipbud/</loc><lastmod>2026-07-25</lastmod></url>
-  <url><loc>https://passionfruit13.github.io/tipbud/support</loc><lastmod>2026-07-25</lastmod></url>
-  <url><loc>https://passionfruit13.github.io/tipbud/privacy</loc><lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://tipbud.app/</loc><lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://tipbud.app/support</loc><lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://tipbud.app/privacy</loc><lastmod>2026-07-25</lastmod></url>
+  <url><loc>https://tipbud.app/tip-deduction</loc><lastmod>2026-07-26</lastmod></url>
+  <url><loc>https://tipbud.app/press</loc><lastmod>2026-07-26</lastmod></url>
 </urlset>
