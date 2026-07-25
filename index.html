@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TipBud — Know what you took home | Server Tip Tracker for iPhone</title>
+<title>TipBud — Tip Tracker for Servers & Bartenders | Know What You Took Home</title>
 <meta name="description" content="TipBud logs a shift in about ten seconds and shows your true hourly rate — wages + tips − tip-outs. For servers and bartenders. No ads, no account, no subscription.">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -12,10 +12,29 @@
 <meta property="og:description" content="A tip tracker for servers and bartenders. Ten-second logging, true hourly rate after tip-outs, a history that survives anything. $19.99 once — never a subscription.">
 <meta property="og:image" content="https://passionfruit13.github.io/tipbud/img/og.png">
 <meta property="og:url" content="https://passionfruit13.github.io/tipbud/">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#121011">
+<link rel="canonical" href="https://passionfruit13.github.io/tipbud/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TipBud",
+ "operatingSystem":"iOS","applicationCategory":"FinanceApplication",
+ "description":"Tip tracker for servers and bartenders. Ten-second shift logging, true hourly rate after tip-outs, CSV export for the IRS tip deduction.",
+ "offers":{"@type":"Offer","price":"19.99","priceCurrency":"USD"},
+ "url":"https://passionfruit13.github.io/tipbud/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Is my data really private?","acceptedAnswer":{"@type":"Answer","text":"Yes — structurally, not just by promise. TipBud has no servers, no accounts, and no analytics. Your shifts live on your phone and, if you turn sync on, in your own private iCloud."}},
+ {"@type":"Question","name":"What happens after my 30 free shifts?","acceptedAnswer":{"@type":"Answer","text":"Logging new shifts asks for the one-time unlock. Everything you already logged stays fully viewable and exportable, paid or not."}},
+ {"@type":"Question","name":"Can I import years of tips from another app?","acceptedAnswer":{"@type":"Answer","text":"Yes. Export a CSV from your old tracker and use Import CSV in TipBud — columns are matched automatically, and imported shifts never count against your free 30."}},
+ {"@type":"Question","name":"New phone — do I pay again?","acceptedAnswer":{"@type":"Answer","text":"No. The unlock is tied to your Apple Account: tap Restore Purchases on the new phone. Your history follows via iCloud or a backup file."}}]}
+</script>
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
 <style>
   :root {
     --oxblood: #8E1F2C;
@@ -32,7 +51,8 @@
     --hairline-light: #E7DDCF;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  [id] { scroll-margin-top: 24px; }
   body {
     font-family: "Archivo", -apple-system, sans-serif;
     background: var(--night);
@@ -55,7 +75,7 @@
   .brand .mark { width: 34px; height: 34px; border-radius: 8px; display: block; }
   .brand .word { font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: var(--cream); }
   .topbar nav { display: flex; align-items: center; gap: 26px; font-size: 15px; font-weight: 500; }
-  .topbar nav a { color: var(--muted-dark); text-decoration: none; }
+  .topbar nav a { color: var(--muted-dark); text-decoration: none; padding: 10px 0; }
   .topbar nav a:hover, .topbar nav a:focus-visible { color: var(--brass); }
   .topbar .chip {
     color: var(--night); background: var(--brass); font-weight: 700;
@@ -86,7 +106,9 @@
     display: inline-block; background: var(--brass); color: var(--night);
     font-weight: 800; font-size: 17px; text-decoration: none;
     padding: 16px 30px; border-radius: 999px;
-    transition: transform 120ms ease, background 120ms ease;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cta { transition: transform 120ms ease, background 120ms ease; }
   }
   .cta:hover, .cta:focus-visible { background: #F2C560; transform: translateY(-1px); }
   .cta-fine { color: var(--muted-dark); font-size: 14px; }
@@ -231,9 +253,9 @@
                   gap: 32px; flex-wrap: wrap; }
   .footer-tag { color: var(--muted-dark); font-size: 15px; margin-top: 10px; }
   footer nav { display: flex; gap: 22px; font-size: 15px; }
-  footer nav a { color: var(--muted-dark); text-decoration: none; }
+  footer nav a { color: var(--muted-dark); text-decoration: none; padding: 10px 0; display: inline-block; }
   footer nav a:hover, footer nav a:focus-visible { color: var(--brass); }
-  .footer-legal { color: #6f6862; font-size: 13px; margin-top: 40px; }
+  .footer-legal { color: var(--muted-dark); font-size: 13px; margin-top: 40px; }
 
   /* ---------- load animation (hero only, one orchestrated moment) ---------- */
   @media (prefers-reduced-motion: no-preference) {
@@ -242,6 +264,16 @@
     .rise.d3 { animation-delay: 240ms; } .rise.d4 { animation-delay: 340ms; }
     @keyframes rise { to { opacity: 1; transform: none; } }
   }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  .vbtn {
+    /* top-anchored: the hero clips the frame's bottom bleed, so bottom-anchoring hides it */
+    position: absolute; right: 26px; top: 74px; width: 38px; height: 38px; z-index: 3;
+    border-radius: 50%; background: rgba(0,0,0,0.55); color: var(--cream);
+    border: 1px solid rgba(246,241,233,0.3); font-size: 12px; cursor: pointer;
+  }
+  .vbtn:hover { background: rgba(0,0,0,0.75); }
   :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
 
   /* ---------- dark mode: light sections flip; brand-dark bands stay ---------- */
@@ -272,10 +304,11 @@
     .pillars { grid-template-columns: 1fr; }
     .hero .phone { margin-bottom: -80px; max-width: 320px; }
     .check-band { padding-top: 120px; }
-    .topbar nav a.quiet { display: none; }
+    .topbar nav a.quiet:not([href="support"]) { display: none; }
     .feature .phone { max-width: 300px; }
   }
   @media (max-width: 480px) {
+    .topbar nav a.quiet { display: none; }
     .rule-note { display: none; }
     .ledger-row { font-size: 18px; }
     .ledger-row.total { font-size: 23px; }
@@ -283,6 +316,8 @@
 </style>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="topbar">
   <div class="container topbar-inner">
@@ -297,7 +332,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <section class="hero">
   <div class="container hero-grid">
@@ -317,6 +352,7 @@
         <source src="img/app-scroll.mp4" type="video/mp4">
         <img src="img/scroll-poster.png" alt="TipBud Shifts tab: July 2026 calendar with each worked night's take-home under the date.">
       </video>
+      <button class="vbtn" id="vbtn" aria-label="Pause animation">❚❚</button>
     </div>
   </div>
 </section>
@@ -344,7 +380,7 @@
         <p>It greets you by name, shows last night's take-home with cash, card, and tip-out broken out, your trailing week, and your month pace — <strong>"On pace for about $5,050 this month."</strong></p>
         <p>It even knows what your best weekday actually pays, from your own history.</p>
       </div>
-      <div class="phone"><img src="img/home.png" width="900" height="1840" loading="lazy"
+      <div class="phone"><img src="img/home.webp" width="900" height="1840" loading="lazy"
         alt="TipBud home screen: Good afternoon, Matilda — last night $334.35 took home, $53.62 an hour, with cash, card, and tip-out broken out."></div>
     </div>
 
@@ -355,7 +391,7 @@
         <p>Cash, card, sales, hours — and TipBud pre-fills your usual Saturday from your own history, so most nights you just fix the numbers and hit Save.</p>
         <p>Tip-outs are computed from your rules. <strong>Busser 2%, bar 1.5%?</strong> Set it once per job and every shift does the math for you.</p>
       </div>
-      <div class="phone"><img src="img/log.png" width="760" height="1553" loading="lazy"
+      <div class="phone"><img src="img/log.webp" width="760" height="1553" loading="lazy"
         alt="TipBud log shift sheet with job, date, start and end times filled in, and a note that fields were pre-filled from your last 8 Saturdays."></div>
     </div>
 
@@ -366,7 +402,7 @@
         <p>Wages + tips − tip-outs, divided by the hours you actually worked. Per shift, per week, per month — the number your paycheck never tells you.</p>
         <p>It's how you compare a slow Tuesday double against a slammed Friday close, and know which one was actually worth it.</p>
       </div>
-      <div class="phone"><img src="img/rate.png" width="760" height="1553" loading="lazy"
+      <div class="phone"><img src="img/rate.webp" width="760" height="1553" loading="lazy"
         alt="TipBud shift detail with the hourly rate hero: $53.62 per hour."></div>
     </div>
 
@@ -376,7 +412,7 @@
         <h2>The whole month on one screen</h2>
         <p>Every shift on a calendar with the night's take-home under the date. Tap any day for the full breakdown; switch to weeks when that's how your brain works.</p>
       </div>
-      <div class="phone"><img src="img/calendar.png" width="760" height="1553" loading="lazy"
+      <div class="phone"><img src="img/calendar.webp" width="760" height="1553" loading="lazy"
         alt="TipBud Shifts tab: July on a month calendar with each worked night's dollars under the date, $4,055.54 total."></div>
     </div>
 
@@ -387,7 +423,7 @@
         <p>Day-of-week averages, an eight-week trend, cash vs card, personal bests. TipBud reads your history and says things like <strong>"Your Fridays are worth about double your Tuesdays."</strong> Pick up shifts accordingly.</p>
         <p>Optional heads-up notifications, computed on your phone from your own numbers — off by default, always.</p>
       </div>
-      <div class="phone"><img src="img/insights.png" width="760" height="1553" loading="lazy"
+      <div class="phone"><img src="img/insights.webp" width="760" height="1553" loading="lazy"
         alt="TipBud Insights: last 7 days and this month summaries, tips over the last 8 weeks, and average tips by day with Friday the clear peak."></div>
     </div>
 
@@ -397,7 +433,7 @@
         <h2>Share the night, dollars optional</h2>
         <p>A clean card for the group chat. Show the numbers when it was a great night — or flip on <strong>$ hidden</strong> and share the shape of the night without the dollars.</p>
       </div>
-      <div class="phone"><img src="img/share.png" width="760" height="1553" loading="lazy"
+      <div class="phone"><img src="img/share.webp" width="760" height="1553" loading="lazy"
         alt="TipBud share sheet: a dark card reading Friday Jul 24, $334.35 took home, with a $-hidden toggle and Share button."></div>
     </div>
 
@@ -521,12 +557,21 @@
 </footer>
 
 <script>
-  // The page's only JS: honor Reduced Motion for the hero scroll video (poster stays).
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches)
-    document.querySelectorAll("video[autoplay]").forEach(function (v) {
-      v.removeAttribute("autoplay");
-      v.pause();
+  // Minimal JS: honor Reduced Motion for the hero video, and give everyone a pause control.
+  (function () {
+    var v = document.querySelector(".hero video"), b = document.getElementById("vbtn");
+    function setBtn(paused) {
+      if (!b) return;
+      b.textContent = paused ? "▶" : "❚❚";
+      b.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
+    }
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches && v) {
+      v.removeAttribute("autoplay"); v.pause(); setBtn(true);
+    }
+    if (b && v) b.addEventListener("click", function () {
+      if (v.paused) { v.play(); setBtn(false); } else { v.pause(); setBtn(true); }
     });
+  })();
 </script>
 </body>
 </html>
