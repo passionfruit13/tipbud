@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Tax on Tips Calculator — Estimate Your 2025–2028 Tip Deduction Savings | TipBud</title>
+<meta name="description" content="Free no tax on tips calculator. Enter your reported tips, filing status, and a marginal rate you choose — see the capped 2025–2028 U.S. federal tip deduction and an illustrative savings figure. Not tax advice.">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="No Tax on Tips Calculator — estimate your 2025–2028 tip deduction">
+<meta property="og:description" content="Enter reported tips and a marginal rate you pick. See the capped U.S. federal tip deduction and an illustrative savings figure. Illustration only, not tax advice.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/no-tax-on-tips-calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://tipbud.app/no-tax-on-tips-calculator">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --bg: #F6F1E9;
+    --ink: #1A1516;
+    --body: #3D3630;
+    --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F6F1E9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 24px 72px; }
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner { max-width: 680px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar nav { display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a.quiet { color: var(--muted); text-decoration: none; padding: 10px 0; }
+  .topbar nav a.quiet:hover, .topbar nav a.quiet:focus-visible { color: var(--accent-ink); }
+  .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; }
+  .chip:hover, .chip:focus-visible { background: #F2C560; }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
+
+  header { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 9px; display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--brass);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul, ol { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
+           color: var(--muted); font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  small.fine, .fine { color: var(--muted); font-size: 15px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  /* ---------- calculator ---------- */
+  .tool { background: var(--surface); border: 1px solid var(--hair); border-radius: 16px;
+    padding: 24px 20px; }
+  .tool-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--accent-ink); margin: 14px 0; }
+  .tool-eyebrow:first-child { margin-top: 0; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field label { display: block; font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  input, select, button { font: inherit; color: inherit; }
+  .field input, .field select {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--hair); border-radius: 10px;
+    background: var(--bg); color: var(--ink); font-size: 17px; font-variant-numeric: tabular-nums;
+  }
+  .field .hint { font-size: 13px; margin-top: 6px; color: var(--muted); }
+  .advisory { margin-top: 18px; padding: 14px 16px; border: 2px solid var(--brass); border-radius: 12px;
+    background: var(--bg); color: var(--ink); font-weight: 600; font-size: 16px; }
+
+  /* results ledger — always the night check, both schemes */
+  .results { background: #1A1516; border-radius: 16px; padding: 22px 24px; margin-top: 18px; }
+  .results-title { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: #B8B0A8; text-align: center; margin: 0 0 14px; }
+  .ledger-row { display: flex; align-items: baseline; gap: 12px;
+    font-size: 18px; font-weight: 500; padding: 7px 0; color: #CFC7BF; }
+  .ledger-row .dots { flex: 1; border-bottom: 2px dotted #4A4244; transform: translateY(-5px); }
+  .ledger-row .val { font-weight: 700; white-space: nowrap; color: #F6F1E9;
+    font-variant-numeric: tabular-nums; }
+  .ledger-row.out .val { color: #D98B6C; }
+  .ledger-row.total { font-weight: 700; padding-top: 12px; color: #F6F1E9; }
+  .ledger-row.total .val { color: var(--brass); }
+  .truerate { margin-top: 16px; padding-top: 16px; border-top: 1px solid #322C2E; text-align: center; }
+  .truerate .label { font-size: 13px; font-weight: 700; letter-spacing: 2.4px;
+    text-transform: uppercase; color: #B8B0A8; }
+  .truerate .fig { font-size: clamp(40px, 10vw, 52px); font-weight: 800; color: var(--brass);
+    letter-spacing: -1px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .truerate .per { font-size: 15px; color: #B8B0A8; }
+  .results .fine { color: #B8B0A8; font-size: 13px; text-align: center; margin-top: 12px; }
+  .noscript-note { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--hair);
+    border-radius: 10px; color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+  <nav aria-label="Site">
+    <a class="quiet" href="./#rate">Features</a>
+    <a class="quiet" href="./#privacy">Privacy</a>
+    <a class="quiet" href="./#pricing">Pricing</a>
+    <a class="quiet" href="guides">Guides</a>
+    <a class="quiet" href="support">Support</a>
+    <a class="chip" href="./#pricing">Get TipBud</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<main id="main">
+
+<header>
+  <div class="rule"></div>
+  <h1>No Tax on Tips Calculator</h1>
+  <p class="lede">For U.S. federal tax years <strong>2025 through 2028</strong>, qualified tipped workers can deduct up to <strong>$25,000</strong> a year of reported tips from federal taxable income. Enter your tips and a marginal rate you choose, and see what the deduction could be worth. Everything runs in your browser; nothing is saved or sent.</p>
+</header>
+
+<form id="calc" class="tool" novalidate>
+  <p class="tool-eyebrow">Your year</p>
+  <div class="fields">
+    <div class="field">
+      <label for="tips">Reported tips for the year ($)</label>
+      <input id="tips" type="number" min="0" step="1" inputmode="decimal" placeholder="18000">
+      <p class="hint">Or leave blank and estimate per shift below.</p>
+    </div>
+    <div class="field">
+      <label for="pershift">Average tips per shift ($)</label>
+      <input id="pershift" type="number" min="0" step="1" inputmode="decimal" placeholder="150">
+      <p class="hint">Used only if the yearly field is blank.</p>
+    </div>
+    <div class="field">
+      <label for="shifts">Shifts per week</label>
+      <input id="shifts" type="number" min="0" step="1" inputmode="numeric" value="4">
+      <p class="hint">Yearly estimate = per shift &times; shifts &times; 50 weeks.</p>
+    </div>
+    <div class="field">
+      <label for="status">Filing status</label>
+      <select id="status">
+        <option value="150000">Single / other</option>
+        <option value="300000">Married filing jointly</option>
+      </select>
+      <p class="hint">Sets the $150,000 / $300,000 phase-out start.</p>
+    </div>
+    <div class="field">
+      <label for="magi">Modified AGI ($, optional)</label>
+      <input id="magi" type="number" min="0" step="1000" inputmode="decimal" placeholder="Below phase-out">
+      <p class="hint">Leave blank if your income is under the threshold.</p>
+    </div>
+    <div class="field">
+      <label for="rate">Marginal federal rate — your pick</label>
+      <select id="rate">
+        <option value="10">10%</option>
+        <option value="12" selected>12%</option>
+        <option value="22">22%</option>
+        <option value="24">24%</option>
+      </select>
+      <p class="hint">We never compute your bracket; you choose it.</p>
+    </div>
+  </div>
+
+  <p class="advisory">This is an illustration, not tax advice — the real deduction depends on your full return; confirm with your tax preparer.</p>
+  <noscript><p class="noscript-note">This calculator needs JavaScript to do the math. Enable JavaScript, or work the steps by hand: deduction = tips up to $25,000, reduced $100 per $1,000 of modified AGI over your threshold; savings ≈ deduction &times; your marginal rate.</p></noscript>
+
+  <div class="results">
+    <p class="results-title">The illustration</p>
+    <div class="ledger-row"><span>Qualified tips</span><span class="dots"></span><span class="val" id="r-tips">$0</span></div>
+    <div class="ledger-row out"><span>Over the $25,000 cap</span><span class="dots"></span><span class="val" id="r-cap">&minus; $0</span></div>
+    <div class="ledger-row out"><span>Income phase-out</span><span class="dots"></span><span class="val" id="r-phase">&minus; $0</span></div>
+    <div class="ledger-row total"><span>Estimated deduction</span><span class="dots"></span><span class="val" id="r-ded">$0</span></div>
+    <div class="truerate" aria-live="polite">
+      <p class="label">Illustrative savings</p>
+      <p class="fig" id="r-save">$0</p>
+      <p class="per" id="r-savenote">roughly this much less federal income tax, at your 12% rate</p>
+    </div>
+    <p class="fine">Federal income tax only. Social Security and Medicare tax (7.65%) and any state income tax still apply to reported tips.</p>
+  </div>
+</form>
+
+<h2>How the tip deduction works</h2>
+<p>The One, Big, Beautiful Bill Act (2025) created a U.S. federal income tax deduction for qualified tips. Three facts carry most of it:</p>
+<ul>
+  <li><strong>Up to $25,000 a year, 2025 through 2028.</strong> You deduct your qualified reported tips, capped at $25,000, from federal taxable income — no itemizing required, it works alongside the standard deduction. The cap and years are on the <a href="https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you">IRS's "no tax on tips" page</a>.</li>
+  <li><strong>It is a deduction, not an exemption.</strong> Your tips are still income; the deduction reduces the part of it federal income tax is figured on. That is why the savings above is deduction &times; your marginal rate, not the deduction itself.</li>
+  <li><strong>It phases out at higher incomes.</strong> Under <a href="https://www.law.cornell.edu/uscode/text/26/224">26 U.S.C. §224</a>, the deduction shrinks by $100 for each $1,000 of modified adjusted gross income above $150,000 ($300,000 on a joint return), down to zero.</li>
+</ul>
+<p>That is the sketch. The full picture — Schedule 1-A, self-employment rules, what "qualified" excludes — is in our <a href="tip-deduction">tip deduction guide</a>.</p>
+
+<h2>Who qualifies</h2>
+<p>Three tests, all U.S. federal:</p>
+<ul>
+  <li><strong>Your occupation is on the IRS list</strong> of <a href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024">occupations that customarily and regularly received tips</a> before 2025 — servers, bartenders, bussers, hosts, delivery, and many hospitality and personal-service roles.</li>
+  <li><strong>The tips are voluntary</strong> — cash or card tips from customers, or your tip-pool share. Mandatory service charges the house adds to the check do not count.</li>
+  <li><strong>The tips were properly reported</strong> — on your W-2, a 1099, or Form 4137. Cash that was never reported cannot be deducted.</li>
+</ul>
+<p>You also need a Social Security number on the return, and married taxpayers must file jointly to claim it.</p>
+
+<h2>What it does not change</h2>
+<ul>
+  <li><strong>Social Security and Medicare tax.</strong> The 7.65% FICA share still comes out of every reported tip dollar, same as before.</li>
+  <li><strong>State income tax.</strong> This is a federal deduction; your state sets its own rules and may tax tips in full.</li>
+  <li><strong>Reporting.</strong> You still report tips of $20 or more in a month to your employer, and the deduction only reaches tips that were reported. Skipping reporting to "save tax" now costs you the deduction too.</li>
+  <li><strong>Your paycheck math.</strong> Tip-outs, tip pools, and your actual hourly are what they were — check yours with the <a href="tips-per-hour-calculator">tips per hour calculator</a> and the <a href="tip-out-calculator">tip-out calculator</a>.</li>
+</ul>
+
+<h2>Keep records the IRS way</h2>
+<p>The deduction rides on your reported tip total, and that total rides on a daily record — date, cash tips, card tips, and what you tipped out. A number reconstructed in April is exactly what the record exists to prevent; a number written down the night you earned it is just a fact your preparer can use.</p>
+
+<h2>No tax on tips questions, answered</h2>
+
+<h3>Is "no tax on tips" real?</h3>
+<p class="a">Yes — as a U.S. federal income tax deduction for 2025 through 2028, capped at $25,000 a year, not a blanket exemption. Tips are still income, still reported, and still subject to Social Security and Medicare tax; the deduction reduces federal income tax only.</p>
+
+<h3>How much will I save?</h3>
+<p class="a">Roughly your deduction times your marginal federal rate. Someone who reports $18,000 in qualified tips and sits in the 12% bracket would see federal income tax fall by about $2,160. The real figure depends on your full return, which is why this page is an illustration and your preparer has the final word.</p>
+
+<h3>Do cash tips count?</h3>
+<p class="a">Yes — cash, card, and tip-pool shares can all qualify, but only if they were properly reported on a W-2, a 1099, or Form 4137. Unreported cash never qualifies, which makes the daily tip record the whole ballgame.</p>
+
+<h3>Does it apply to 2026?</h3>
+<p class="a">Yes. The deduction covers U.S. federal tax years 2025 through 2028. Under current law it expires after 2028 unless Congress extends it.</p>
+
+<h3>Do I still report my tips?</h3>
+<p class="a">Yes, exactly as before — tips of $20 or more in a month go to your employer by the 10th of the following month, and the IRS still expects a daily record. The deduction happens on your tax return, not in your reporting.</p>
+
+<div class="contact">
+  <h2>Your tip total, kept for you</h2>
+  <p>TipBud keeps the daily record this deduction depends on: log each shift's cash tips, card tips, and tip-outs in about ten seconds, then export the year as one CSV for your preparer. It works offline and the log stays on your phone. <a href="./">See how TipBud works</a>.</p>
+</div>
+
+<div class="contact">
+  <h2>Sources</h2>
+  <p><a href="https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you">IRS: What the "no tax on tips" deduction means for you</a> · <a href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024">IRS: Occupations that customarily and regularly received tips</a> · <a href="https://www.law.cornell.edu/uscode/text/26/224">26 U.S.C. §224 — Qualified tips</a></p>
+  <p><small class="fine">This page is general information about U.S. federal tax law and an illustration only, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="guides">Guides</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is \"no tax on tips\" real?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — as a U.S. federal income tax deduction for 2025 through 2028, capped at $25,000 a year, not a blanket exemption. Tips are still income, still reported, and still subject to Social Security and Medicare tax; the deduction reduces federal income tax only." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much will I save?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Roughly your deduction times your marginal federal rate. Someone who reports $18,000 in qualified tips and sits in the 12% bracket would see federal income tax fall by about $2,160. The real figure depends on your full return — confirm with your tax preparer." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do cash tips count?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — cash, card, and tip-pool shares can all qualify, but only if they were properly reported on a W-2, a 1099, or Form 4137. Unreported cash never qualifies, which makes the daily tip record essential." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it apply to 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The deduction covers U.S. federal tax years 2025 through 2028. Under current law it expires after 2028 unless Congress extends it." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I still report my tips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, exactly as before — tips of $20 or more in a month go to your employer by the 10th of the following month, and the IRS still expects a daily record. The deduction happens on your tax return, not in your reporting." }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("calc");
+  var CAP = 25000;
+
+  function money(n) {
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+  function val(id) {
+    var n = parseFloat(document.getElementById(id).value);
+    return isFinite(n) && n >= 0 ? n : 0;
+  }
+  function set(id, text) {
+    document.getElementById(id).textContent = text;
+  }
+
+  function update() {
+    var yearly = val("tips");
+    if (document.getElementById("tips").value === "") {
+      yearly = val("pershift") * val("shifts") * 50;
+    }
+    var threshold = parseFloat(document.getElementById("status").value);
+    var magi = val("magi");
+    var rate = parseFloat(document.getElementById("rate").value);
+    var overCap = Math.max(0, yearly - CAP);
+    var capped = Math.min(yearly, CAP);
+    var excess = Math.max(0, magi - threshold);
+    var phase = Math.min(capped, Math.ceil(excess / 1000) * 100);
+    var deduction = capped - phase;
+    var savings = deduction * rate / 100;
+    set("r-tips", money(yearly));
+    set("r-cap", "− " + money(overCap));
+    set("r-phase", "− " + money(phase));
+    set("r-ded", money(deduction));
+    set("r-save", money(savings));
+    set("r-savenote", "roughly this much less federal income tax, at your " + rate + "% rate");
+  }
+
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  update();
+})();
+</script>
+</body>
+</html>

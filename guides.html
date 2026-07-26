@@ -3,12 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Something went wrong — TipBud</title>
-<meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<title>Free Tip Tools &amp; Guides for Servers and Bartenders | TipBud</title>
+<meta name="description" content="Free tip-out and tips-per-hour calculators, a tip tracker template, and plain-language guides to tip-outs and the U.S. federal tip deduction — from TipBud.">
+<link rel="canonical" href="https://tipbud.app/guides">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="Free Tip Tools &amp; Guides for Tipped Workers">
+<meta property="og:description" content="Calculators, templates, and guides for servers and bartenders — tip-outs, tips per hour, the U.S. tip deduction, and how to track tips.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/guides">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
 @font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
   font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
@@ -100,6 +109,14 @@
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  .cardlist { display: grid; gap: 14px; margin-top: 24px; }
+  .cardlist a { display: block; padding: 20px 24px; background: var(--surface);
+    border: 1px solid var(--hair); border-radius: 16px; text-decoration: none;
+    transition: border-color 140ms ease, transform 140ms ease; }
+  .cardlist a:hover, .cardlist a:focus-visible { border-color: var(--brass); transform: translateY(-1px); }
+  .cardlist strong { display: block; font-size: 18px; color: var(--ink); letter-spacing: -0.2px; }
+  .cardlist span { color: var(--muted); font-size: 15px; margin-top: 4px; display: block; }
 </style>
 </head>
 <body>
@@ -119,10 +136,29 @@
 <main id="main">
 <header>
   <div class="rule"></div>
-  <h1>That didn't go through.</h1>
-<p class="lede">Our signup hiccuped. Try again in a minute, or just email <a href="mailto:shakti.thakran@outlook.com?subject=Tell%20me%20when%20TipBud%20launches"><strong>shakti.thakran@outlook.com</strong></a> with the subject "launch" and you're on the list.</p>
+  <h1>Free tools &amp; guides</h1>
+  <p class="lede">For servers, bartenders, and anyone who works for tips — free to use, no signup, nothing tracked. Built by the maker of <a href="./">TipBud</a>.</p>
 </header>
-<p style="margin-top:28px"><a href="./">&larr; Back to TipBud</a></p>
+
+<h2>Free tools</h2>
+<div class="cardlist">
+  <a href="tip-out-calculator"><strong>Tip-Out Calculator</strong><span>Enter your tips, sales, and house rules — see every tip-out, your take-home, and your True Rate.</span></a>
+  <a href="tips-per-hour-calculator"><strong>Tips-per-Hour Calculator</strong><span>What a shift really paid per hour — with weekly and yearly projections.</span></a>
+  <a href="no-tax-on-tips-calculator"><strong>No-Tax-on-Tips Savings Calculator</strong><span>An illustration of what the 2025–2028 U.S. federal tip deduction could be worth to you.</span></a>
+  <a href="tip-tracker-template"><strong>Tip Tracker Template</strong><span>A free spreadsheet layout for daily tip records — view it, copy it, or download the CSV.</span></a>
+</div>
+
+<h2>Guides</h2>
+<div class="cardlist">
+  <a href="tip-out-guide"><strong>Tip-Outs, Explained</strong><span>Who tips out whom, typical percentage ranges by role, and how the math works.</span></a>
+  <a href="how-to-track-tips"><strong>How to Track Your Tips</strong><span>Notebook vs spreadsheet vs app, the daily record the IRS expects, and the real-hourly formula.</span></a>
+  <a href="tip-deduction"><strong>No Tax on Tips: the U.S. Tip Deduction</strong><span>Who qualifies for the 2025–2028 U.S. federal deduction and the records to keep.</span></a>
+</div>
+
+<div class="contact">
+  <h2>The ten-second version</h2>
+  <p>Every one of these exists inside <a href="./"><strong>TipBud</strong></a> — tip-outs computed from your rules, True Rate on every shift, and the daily record already kept. For iPhone.</p>
+</div>
 </main>
 
 <footer>

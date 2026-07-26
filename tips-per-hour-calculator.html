@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tips Per Hour Calculator — Your Real Hourly Wage With Tips | TipBud</title>
+<meta name="description" content="Free tips per hour calculator. Enter tips, tip-out, and hours — see your tips per hour, your true hourly wage with base pay, and weekly and annual projections. Runs in your browser.">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="Tips Per Hour Calculator — your real hourly wage with tips">
+<meta property="og:description" content="Enter tips, tip-out, and hours. See tips per hour, your True Rate with base pay, and weekly and annual projections.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/tips-per-hour-calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://tipbud.app/tips-per-hour-calculator">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --bg: #F6F1E9;
+    --ink: #1A1516;
+    --body: #3D3630;
+    --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F6F1E9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 24px 72px; }
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner { max-width: 680px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar nav { display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a.quiet { color: var(--muted); text-decoration: none; padding: 10px 0; }
+  .topbar nav a.quiet:hover, .topbar nav a.quiet:focus-visible { color: var(--accent-ink); }
+  .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; }
+  .chip:hover, .chip:focus-visible { background: #F2C560; }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
+
+  header { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 9px; display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--brass);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul, ol { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
+           color: var(--muted); font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  small.fine, .fine { color: var(--muted); font-size: 15px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  /* ---------- calculator ---------- */
+  .tool { background: var(--surface); border: 1px solid var(--hair); border-radius: 16px;
+    padding: 24px 20px; }
+  .tool-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--accent-ink); margin: 0 0 14px; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field label { display: block; font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  input, select, button { font: inherit; color: inherit; }
+  .field input, .field select {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--hair); border-radius: 10px;
+    background: var(--bg); color: var(--ink); font-size: 17px; font-variant-numeric: tabular-nums;
+  }
+  .basis-wrap { display: grid; grid-template-columns: 1fr 108px; gap: 8px; }
+  .field .hint { font-size: 13px; margin-top: 6px; color: var(--muted); }
+
+  /* results ledger — always the night check, both schemes */
+  .results { background: #1A1516; border-radius: 16px; padding: 22px 24px; margin-top: 20px; }
+  .results-title { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: #B8B0A8; text-align: center; margin: 0 0 14px; }
+  .ledger-row { display: flex; align-items: baseline; gap: 12px;
+    font-size: 18px; font-weight: 500; padding: 7px 0; color: #CFC7BF; }
+  .ledger-row .dots { flex: 1; border-bottom: 2px dotted #4A4244; transform: translateY(-5px); }
+  .ledger-row .val { font-weight: 700; white-space: nowrap; color: #F6F1E9;
+    font-variant-numeric: tabular-nums; }
+  .ledger-row.out .val { color: #D98B6C; }
+  .ledger-row.total { font-weight: 700; padding-top: 12px; color: #F6F1E9; }
+  .ledger-row.total .val { color: var(--brass); }
+  .truerate { margin-top: 16px; padding-top: 16px; border-top: 1px solid #322C2E; text-align: center; }
+  .truerate .label { font-size: 13px; font-weight: 700; letter-spacing: 2.4px;
+    text-transform: uppercase; color: #B8B0A8; }
+  .truerate .fig { font-size: clamp(40px, 10vw, 52px); font-weight: 800; color: var(--brass);
+    letter-spacing: -1px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .truerate .per { font-size: 15px; color: #B8B0A8; }
+  .proj { margin-top: 16px; padding-top: 12px; border-top: 1px solid #322C2E; }
+  .proj .fine { color: #B8B0A8; font-size: 13px; text-align: center; margin-top: 6px; }
+  .noscript-note { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--hair);
+    border-radius: 10px; color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+  <nav aria-label="Site">
+    <a class="quiet" href="./#rate">Features</a>
+    <a class="quiet" href="./#privacy">Privacy</a>
+    <a class="quiet" href="./#pricing">Pricing</a>
+    <a class="quiet" href="guides">Guides</a>
+    <a class="quiet" href="support">Support</a>
+    <a class="chip" href="./#pricing">Get TipBud</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<main id="main">
+
+<header>
+  <div class="rule"></div>
+  <h1>Tips Per Hour Calculator</h1>
+  <p class="lede">Enter your tips, tip-out, and hours. See your <strong>tips per hour</strong>, your <strong>True Rate</strong> — tips plus base wage, per hour worked — and what a typical week projects to over a year. Everything runs in your browser; nothing is saved or sent.</p>
+</header>
+
+<form id="calc" class="tool" novalidate>
+  <p class="tool-eyebrow">Your shift</p>
+  <div class="fields">
+    <div class="field">
+      <label for="tips">Total tips ($)</label>
+      <input id="tips" type="number" min="0" step="0.01" inputmode="decimal" placeholder="220">
+    </div>
+    <div class="field">
+      <label for="tipout">Tip-out paid</label>
+      <div class="basis-wrap">
+        <input id="tipout" type="number" min="0" step="0.01" inputmode="decimal" placeholder="30">
+        <select id="tipout-basis" aria-label="Tip-out entered as dollars or as a percent of tips">
+          <option value="usd">$</option>
+          <option value="pct">% of tips</option>
+        </select>
+      </div>
+      <p class="hint">Not sure? <a href="tip-out-calculator">Work it out rule by rule</a>.</p>
+    </div>
+    <div class="field">
+      <label for="hours">Hours worked</label>
+      <input id="hours" type="number" min="0" step="0.25" inputmode="decimal" placeholder="7">
+    </div>
+    <div class="field">
+      <label for="wage">Base hourly wage ($, optional)</label>
+      <input id="wage" type="number" min="0" step="0.01" inputmode="decimal" value="0">
+    </div>
+    <div class="field">
+      <label for="shifts">Shifts per week (optional)</label>
+      <input id="shifts" type="number" min="0" step="1" inputmode="numeric" value="4">
+    </div>
+  </div>
+  <noscript><p class="noscript-note">This calculator needs JavaScript to do the math. Enable JavaScript, or work the steps by hand using the example below — the method is the same.</p></noscript>
+
+  <div class="results">
+    <p class="results-title">The check</p>
+    <div class="ledger-row"><span>Tips</span><span class="dots"></span><span class="val" id="r-tips">$0.00</span></div>
+    <div class="ledger-row out"><span>Tip-out</span><span class="dots"></span><span class="val" id="r-out">&minus; $0.00</span></div>
+    <div class="ledger-row total"><span>Tips kept</span><span class="dots"></span><span class="val" id="r-kept">$0.00</span></div>
+    <div class="ledger-row"><span>Tips per hour</span><span class="dots"></span><span class="val" id="r-tph">$0.00</span></div>
+    <div class="truerate" aria-live="polite">
+      <p class="label">True Rate</p>
+      <p class="fig" id="r-rate">$0.00</p>
+      <p class="per">per hour — tips per hour + base wage</p>
+    </div>
+    <div class="proj">
+      <div class="ledger-row"><span>Weekly, at this pace</span><span class="dots"></span><span class="val" id="r-week">$0.00</span></div>
+      <div class="ledger-row"><span>Annual estimate</span><span class="dots"></span><span class="val" id="r-year">$0</span></div>
+      <p class="fine">Weekly = True Rate &times; hours &times; shifts. Annual = weekly &times; 50, leaving two weeks off.</p>
+    </div>
+  </div>
+</form>
+
+<h2>How to calculate your tips per hour</h2>
+<p>Four steps, and only the first two matter if all you want is the shift number:</p>
+<ol>
+  <li><strong>Tips kept.</strong> Tips minus what you tipped out. Say you walked with <strong>$220</strong> and passed <strong>$30</strong> to the bar and bussers: $220 &minus; $30 = <strong>$190</strong>.</li>
+  <li><strong>Tips per hour.</strong> Tips kept divided by hours worked. Over a <strong>7-hour</strong> shift: $190 &divide; 7 = <strong>$27.14</strong>.</li>
+  <li><strong>True Rate.</strong> Add your base wage. At <strong>$7.25</strong> an hour: $27.14 + $7.25 = <strong>$34.39 per hour</strong> — what the shift actually paid you.</li>
+  <li><strong>Projections.</strong> One shift of that pace is $240.75 ($7.25 &times; 7 + $190). At <strong>4 shifts a week</strong> that is <strong>$963.00 a week</strong>, or about <strong>$48,150 a year</strong> across 50 working weeks.</li>
+</ol>
+<p class="fine">The annual figure is a projection of one shift's pace, not a forecast — see the section on swings below before you quote it to a landlord.</p>
+
+<h2>What counts as a "good" hourly with tips</h2>
+<p>In the U.S. Bureau of Labor Statistics' May 2023 Occupational Employment and Wage Statistics, the median wage for <a href="https://www.bls.gov/oes/current/oes353031.htm">waiters and waitresses (OES 35-3031)</a> was <strong>$15.36 an hour</strong> — a figure that includes reported tips, not base pay alone. Half of servers earned more than that, half less.</p>
+<p>The spread around that median is enormous. A slow lunch shift at a diner and a Saturday night at a busy steakhouse are different jobs financially, even at the same title. Big-city full-service restaurants routinely pay experienced servers $25–40 an hour all-in on good shifts; quiet weeknights anywhere can dip near base wage. So compare your True Rate to your own history first, and to the BLS median second.</p>
+<p>One more thing your hourly does not show: taxes. Through 2028, U.S. federal law lets many tipped workers deduct reported tips from federal taxable income, up to a cap — see what that could be worth with the <a href="no-tax-on-tips-calculator">no tax on tips calculator</a> or the full <a href="tip-deduction">tip deduction guide</a>.</p>
+
+<h2>Why your hourly swings shift to shift</h2>
+<ul>
+  <li><strong>Section and cover count.</strong> Tips scale with sales, and sales scale with how many tables you turn. A four-table section on a dead Tuesday cannot produce a Friday number.</li>
+  <li><strong>Day and daypart.</strong> Weekend dinners usually run double a weekday lunch or more. Averaging one week hides this; averaging a month shows it.</li>
+  <li><strong>Tip-outs on sales.</strong> If your house tips out on sales rather than tips, a table that stiffs you still generates a tip-out, so bad nights hit your hourly twice. The <a href="tip-out-calculator">tip-out calculator</a> shows exactly how much.</li>
+  <li><strong>Season.</strong> Patio months, holidays, and local events move the whole distribution. An annual estimate from one January shift will read low; from one December shift, high.</li>
+</ul>
+<p>The practical fix is sample size: log every shift for a few weeks and use the average, not the memory of your best night.</p>
+
+<h2>Tips per hour questions, answered</h2>
+
+<h3>How do I calculate my hourly wage with tips?</h3>
+<p class="a">Add what the shift paid you — base wage times hours, plus tips after tip-outs — and divide by hours worked. Formula: (wage &times; hours + tips &minus; tip-outs) &divide; hours. The calculator above does this live and calls it your True Rate.</p>
+
+<h3>Do I include tip-outs?</h3>
+<p class="a">Yes — subtract them. Money you pass to bussers, runners, or the bar was never yours to keep, so counting it inflates your hourly. It also is not your income for tax purposes; you report the tips you keep.</p>
+
+<h3>How much do servers make per hour with tips?</h3>
+<p class="a">The BLS May 2023 median for waiters and waitresses was $15.36 an hour including reported tips, but the range is wide — busy full-service houses commonly pay $25–40 an hour all-in on strong shifts, while slow shifts can land near base wage. Your own multi-week average is the number that matters.</p>
+
+<h3>Should I count cash and card tips separately?</h3>
+<p class="a">Track them separately, total them for the hourly. Cash and card tips are both income and both belong in the calculation, but keeping the split matters for your records — card tips show up on your paycheck and W-2 automatically, while cash tips only get reported because you wrote them down.</p>
+
+<div class="contact">
+  <h2>Track it automatically</h2>
+  <p>TipBud does this math every shift. Log tips, tip-outs, and hours in about ten seconds and it shows your True Rate per shift, your averages by day of week, and your running annual pace — with the whole history staying on your phone. <a href="./">See how TipBud works</a>.</p>
+</div>
+
+<div class="contact">
+  <h2>Sources</h2>
+  <p><a href="https://www.bls.gov/oes/current/oes353031.htm">U.S. Bureau of Labor Statistics: Occupational Employment and Wage Statistics, 35-3031 Waiters and Waitresses</a></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="guides">Guides</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate my hourly wage with tips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Add what the shift paid you — base wage times hours, plus tips after tip-outs — and divide by hours worked. Formula: (wage × hours + tips − tip-outs) ÷ hours." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I include tip-outs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — subtract them. Money you pass to bussers, runners, or the bar was never yours to keep, so counting it inflates your hourly. It also is not your income for tax purposes; you report the tips you keep." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do servers make per hour with tips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The BLS May 2023 median for waiters and waitresses was $15.36 an hour including reported tips, but the range is wide — busy full-service houses commonly pay $25–40 an hour all-in on strong shifts, while slow shifts can land near base wage. Your own multi-week average is the number that matters." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I count cash and card tips separately?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Track them separately, total them for the hourly. Cash and card tips are both income and both belong in the calculation, but keeping the split matters for your records — card tips show up on your paycheck and W-2 automatically, while cash tips only get reported because you wrote them down." }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("calc");
+
+  function money(n) {
+    return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function whole(n) {
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+  function val(id) {
+    var n = parseFloat(document.getElementById(id).value);
+    return isFinite(n) && n >= 0 ? n : 0;
+  }
+  function set(id, text) {
+    document.getElementById(id).textContent = text;
+  }
+
+  function update() {
+    var tips = val("tips"), hours = val("hours"), wage = val("wage"), shifts = val("shifts");
+    var t = val("tipout");
+    var basis = document.getElementById("tipout-basis").value;
+    var out = basis === "pct" ? tips * Math.min(t, 100) / 100 : t;
+    out = Math.min(out, tips);
+    var kept = tips - out;
+    var tph = hours > 0 ? kept / hours : 0;
+    var rate = tph + wage;
+    var weekly = rate * hours * shifts;
+    set("r-tips", money(tips));
+    set("r-out", "− " + money(out));
+    set("r-kept", money(kept));
+    set("r-tph", money(tph));
+    set("r-rate", money(rate));
+    set("r-week", money(weekly));
+    set("r-year", whole(weekly * 50));
+  }
+
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  update();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Tip Tracker Spreadsheet Template (Google Sheets, Excel, CSV) | TipBud</title>
+<meta name="description" content="Free tip tracker spreadsheet template for servers and bartenders. Nine columns, three example rows, and the two formulas to add — copy it into Google Sheets or Excel, or download the CSV. No sign-up.">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="Free tip tracker spreadsheet template">
+<meta property="og:description" content="Nine columns, three example rows, two formulas. Copy it into Google Sheets or Excel, or download the CSV. No sign-up.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/tip-tracker-template">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://tipbud.app/tip-tracker-template">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --bg: #F6F1E9;
+    --ink: #1A1516;
+    --body: #3D3630;
+    --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F6F1E9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 24px 72px; }
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner { max-width: 680px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar nav { display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a.quiet { color: var(--muted); text-decoration: none; padding: 10px 0; }
+  .topbar nav a.quiet:hover, .topbar nav a.quiet:focus-visible { color: var(--accent-ink); }
+  .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; display: inline-block; }
+  .chip:hover, .chip:focus-visible { background: #F2C560; }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
+
+  header { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 9px; display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .date { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--brass);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 15px;
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 6px; padding: 1px 7px;
+    color: var(--ink); white-space: nowrap; }
+
+  .tablewrap { overflow-x: auto; margin: 18px 0; border: 1px solid var(--hair);
+    border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 15px; }
+  caption { position: absolute; left: -9999px; }
+  th, td { padding: 10px 12px; text-align: left; white-space: nowrap; }
+  th { font-weight: 700; color: var(--ink); border-bottom: 2px solid var(--brass); }
+  td { color: var(--body); border-bottom: 1px solid var(--hair); }
+  tr:last-child td { border-bottom: none; }
+  th.n, td.n { text-align: right; }
+
+  .copyblock { position: relative; margin: 18px 0; }
+  .copyblock pre { background: var(--surface); border: 1px solid var(--hair); border-radius: 12px;
+    padding: 44px 18px 18px; overflow-x: auto; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; line-height: 1.7; color: var(--body); tab-size: 12; }
+  .copybtn { position: absolute; top: 10px; right: 10px; background: var(--brass); color: #121011;
+    border: none; font-family: inherit; font-weight: 700; font-size: 14px; padding: 7px 16px;
+    border-radius: 999px; cursor: pointer; }
+  .copybtn:hover, .copybtn:focus-visible { background: #F2C560; }
+  .dl { margin: 22px 0 6px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
+           color: var(--muted); font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  small.fine { color: var(--muted); }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this template work in Google Sheets and Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the Copy button, click cell A1 in a blank Google Sheet or Excel workbook, and paste — the tabs split everything into columns automatically. Or download the CSV: Excel and Numbers open it directly, and in Google Sheets use File → Import. Same columns, same formulas either way."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What columns should a tip tracker spreadsheet have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nine: Date, Job, Hours, Cash tips, Card tips, Sales, Tip-out, Take-home, and $/hr. Cash and card stay separate because they reach you differently. Sales lets you check your tip percentage and any sales-based tip-out. Take-home and $/hr are formulas — cash plus card minus tip-out, divided by hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to track cash tips for taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under U.S. federal rules, yes. Cash tips are taxable income, the same as card tips, and IRS Publication 531 expects a daily record of them. If your tips reach $20 or more in a month at one job, you report them to your employer by the 10th of the following month, per IRS Tax Topic 761. This is general information, not tax advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the template really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. No email, no sign-up, no watermark. Copy it or download the CSV and it is yours. It comes from the makers of TipBud, an iOS tip tracker, but the spreadsheet stands on its own."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+  <nav aria-label="Site">
+    <a class="quiet" href="./#rate">Features</a>
+    <a class="quiet" href="./#privacy">Privacy</a>
+    <a class="quiet" href="./#pricing">Pricing</a>
+    <a class="quiet" href="guides">Guides</a>
+    <a class="quiet" href="support">Support</a>
+    <a class="chip" href="./#pricing">Get TipBud</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<main id="main">
+
+<header>
+  <div class="rule"></div>
+  <h1>Free Tip Tracker Spreadsheet Template</h1>
+  <p class="date">Updated July 2026 · Copy-paste, CSV download, and the two formulas to add</p>
+  <p class="lede">A tip tracker spreadsheet needs nine columns and two formulas. This is the template. Copy it straight into Google Sheets or Excel, or download the CSV — no sign-up, no email. It tracks the number that matters: what you <strong>took home</strong>, per hour.</p>
+</header>
+
+<h2>The template</h2>
+<p>One row per shift. Three example rows show how it fills in — the numbers below are realistic dinner and bar shifts, not placeholders.</p>
+
+<div class="tablewrap">
+<table>
+  <caption>Tip tracker spreadsheet template: nine columns with three example shifts</caption>
+  <thead>
+    <tr><th>Date</th><th>Job</th><th class="n">Hours</th><th class="n">Cash tips</th><th class="n">Card tips</th><th class="n">Sales</th><th class="n">Tip-out</th><th class="n">Take-home</th><th class="n">$/hr</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>2026-07-24</td><td>Restaurant</td><td class="n">7.5</td><td class="n">$142</td><td class="n">$168</td><td class="n">$1,480</td><td class="n">$44</td><td class="n">$266</td><td class="n">$35.47</td></tr>
+    <tr><td>2026-07-25</td><td>Restaurant</td><td class="n">8</td><td class="n">$120</td><td class="n">$195</td><td class="n">$1,610</td><td class="n">$48</td><td class="n">$267</td><td class="n">$33.38</td></tr>
+    <tr><td>2026-07-26</td><td>Bar</td><td class="n">6</td><td class="n">$85</td><td class="n">$96</td><td class="n">$890</td><td class="n">$27</td><td class="n">$154</td><td class="n">$25.67</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Why these nine columns:</p>
+<ul>
+  <li><strong>Cash tips and card tips stay separate.</strong> They reach your pocket differently and you will want the split later.</li>
+  <li><strong>Sales</strong> lets you sanity-check your tip percentage and compute any sales-based tip-out. If you are not sure your tip-out is normal, the <a href="tip-out-calculator">tip-out calculator</a> covers the usual percentages.</li>
+  <li><strong>Take-home and $/hr are formulas</strong>, not things you type. They are below.</li>
+  <li><strong>Job</strong> matters even with one job — the day you pick up a second gig, the column is already there.</li>
+</ul>
+<p>New to tracking entirely? Start with <a href="how-to-track-tips">how to keep track of your tips</a> — it covers what to log and why.</p>
+
+<h2>Copy it or download it</h2>
+<p>Click Copy, open a blank Google Sheet or Excel workbook, click cell A1, and paste. The tabs split everything into columns automatically.</p>
+
+<div class="copyblock">
+  <button class="copybtn" id="copy" type="button">Copy</button>
+  <pre id="tsv">Date	Job	Hours	Cash tips	Card tips	Sales	Tip-out	Take-home	$/hr
+2026-07-24	Restaurant	7.5	142	168	1480	44	266	35.47
+2026-07-25	Restaurant	8	120	195	1610	48	267	33.38
+2026-07-26	Bar	6	85	96	890	27	154	25.67</pre>
+</div>
+
+<p>Prefer a file? The CSV has the header, the three example rows, and 30 blank rows ready to fill. Excel and Numbers open it directly; in Google Sheets use File → Import.</p>
+<div class="dl">
+  <a class="chip" href="downloads/tip-tracker-template.csv" download>Download the CSV</a>
+  <small class="fine">tip-tracker-template.csv · under 1 KB</small>
+</div>
+
+<h2>How to use it</h2>
+<p>One row per shift, filled in the night you work it. That is the whole system — about 30 seconds once the sheet is set up.</p>
+<ul>
+  <li><strong>Log the same night.</strong> A number written down at 1 a.m. is a fact. A number reconstructed on Sunday is a guess. Delete the three example rows once you have real shifts in.</li>
+  <li><strong>Count tip-out before you log.</strong> Take-home only means something after what you passed to busser, bar, and host is out of it.</li>
+  <li><strong>Enter hours as decimals.</strong> 7 hours 30 minutes is 7.5, not 7:30 — the $/hr formula needs a plain number.</li>
+  <li><strong>The daily habit is also your tax record.</strong> Under U.S. federal rules the IRS expects a daily record of your tips — <a href="https://www.irs.gov/publications/p531">Publication 531</a> describes it, with Form 4070A as the model layout, and this sheet has the same fields. Since the <a href="tip-deduction">U.S. federal tip deduction</a> (2025–2028) only counts tips you properly reported, that record now has money attached.</li>
+</ul>
+<p><small class="fine">Tax mentions on this page are U.S. federal general information, not tax advice — confirm details with your tax preparer.</small></p>
+
+<h2>The formulas to add</h2>
+<p>With the header in row 1, your first shift is row 2. Columns land as A through I, so Hours is C, Cash tips is D, Card tips is E, Tip-out is G, Take-home is H. The formulas are identical in Google Sheets and Excel.</p>
+<ul>
+  <li><strong>Take-home</strong>, in cell H2: <code>=D2+E2-G2</code></li>
+  <li><strong>$/hr</strong>, in cell I2: <code>=IF(C2="","",H2/C2)</code> — the IF keeps blank rows from showing errors. The plain version is <code>=H2/C2</code>.</li>
+  <li><strong>Fill down:</strong> select H2 and I2, then drag the fill handle to row 34. Every new shift computes itself.</li>
+  <li><strong>Totals</strong>, below the table: <code>=SUM(H2:H34)</code> for total take-home, and <code>=SUM(H2:H34)/SUM(C2:C34)</code> for your real hourly across every logged shift. That last cell is the reason the sheet exists.</li>
+</ul>
+<p>If you want wages in the picture, add a Wages column and include it in the Take-home formula. Tips-only is fine to start — most people add wages once they start comparing jobs.</p>
+
+<h2>When a spreadsheet stops working</h2>
+<p>Honest answer: this template is genuinely enough for one job with a simple tip-out. Plenty of people run a sheet like this for years. It starts to crack in specific, predictable places:</p>
+<ul>
+  <li><strong>Tip-out rules.</strong> The moment your tip-out is "2% of sales to the bar, 1.5% to bussers, a point to the host," column G becomes a formula you have to build, remember, and update every time the house changes the split.</li>
+  <li><strong>Multiple jobs.</strong> Two jobs means filtering or separate tabs, and the totals stop meaning anything without more formulas. The sheet grows faster than your patience for maintaining it.</li>
+  <li><strong>Backup.</strong> The sheet lives in one account or on one phone. Years of shift history deserve better than that.</li>
+  <li><strong>1 a.m.</strong> Opening a spreadsheet on a phone after a close and typing nine cells into the right row is exactly the kind of small chore that quietly stops happening in week three.</li>
+</ul>
+
+<div class="contact">
+  <h2>If the sheet stops happening</h2>
+  <p><a href="./">TipBud</a> is this spreadsheet with the friction removed. Logging a shift takes about ten seconds — it pre-fills your usual numbers, computes tip-outs from your house rules, handles multiple jobs, and backs up privately to iCloud. Your daily record for U.S. federal purposes, with CSV export any time, so your data is never stuck. One $19.99 purchase, no subscription; your first 30 shifts are the trial.</p>
+</div>
+
+<h2>Tip tracker template FAQ</h2>
+
+<h3>Does this template work in Google Sheets and Excel?</h3>
+<p class="a">Yes. Use the Copy button, click cell A1 in a blank Google Sheet or Excel workbook, and paste — the tabs split everything into columns automatically. Or download the CSV: Excel and Numbers open it directly, and in Google Sheets use File → Import. Same columns, same formulas either way.</p>
+
+<h3>What columns should a tip tracker spreadsheet have?</h3>
+<p class="a">Nine: Date, Job, Hours, Cash tips, Card tips, Sales, Tip-out, Take-home, and $/hr. Cash and card stay separate because they reach you differently. Sales lets you check your tip percentage and any sales-based tip-out. Take-home and $/hr are formulas — cash plus card minus tip-out, divided by hours.</p>
+
+<h3>Do I need to track cash tips for taxes?</h3>
+<p class="a">Under U.S. federal rules, yes. Cash tips are taxable income, the same as card tips, and <a href="https://www.irs.gov/publications/p531">IRS Publication 531</a> expects a daily record of them. If your tips reach $20 or more in a month at one job, you report them to your employer by the 10th of the following month, per <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761</a>. This is general information, not tax advice.</p>
+
+<h3>Is the template really free?</h3>
+<p class="a">Yes. No email, no sign-up, no watermark. Copy it or download the CSV and it is yours. It comes from the makers of <a href="./">TipBud</a>, an iOS tip tracker, but the spreadsheet stands on its own.</p>
+
+<div class="contact">
+  <h2>Sources</h2>
+  <p><a href="https://www.irs.gov/publications/p531">IRS Publication 531: Reporting Tip Income</a> · <a href="https://www.irs.gov/forms-pubs/about-form-4070-a">IRS: About Form 4070A, Employee's Daily Record of Tips</a> · <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761: Tips — Withholding and Reporting</a></p>
+  <p><small class="fine">Tax mentions on this page are U.S. federal general information, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="guides">Guides</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
+
+</div>
+<script>
+document.getElementById("copy").addEventListener("click", async function () {
+  var pre = document.getElementById("tsv"), btn = this;
+  try {
+    await navigator.clipboard.writeText(pre.textContent);
+    btn.textContent = "Copied";
+  } catch (e) {
+    var range = document.createRange(); range.selectNodeContents(pre);
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    btn.textContent = document.execCommand("copy") ? "Copied" : "Press ⌘C";
+  }
+  setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+});
+</script>
+</body>
+</html>

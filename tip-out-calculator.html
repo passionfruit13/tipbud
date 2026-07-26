@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip-Out Calculator — Free Tip Out Percentage Calculator for Servers &amp; Bartenders</title>
+<meta name="description" content="Free tip-out calculator. Enter tips, sales, and hours — see every tip-out in dollars, your take-home tips, and your true hourly rate. Percent of sales or percent of tips, up to three rules.">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="Tip-Out Calculator — free tool for servers &amp; bartenders">
+<meta property="og:description" content="Enter tips, sales, and hours. See each tip-out in dollars, your take-home tips, and your True Rate — percent of sales or percent of tips.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/tip-out-calculator">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://tipbud.app/tip-out-calculator">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --bg: #F6F1E9;
+    --ink: #1A1516;
+    --body: #3D3630;
+    --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F6F1E9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 24px 72px; }
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner { max-width: 680px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar nav { display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a.quiet { color: var(--muted); text-decoration: none; padding: 10px 0; }
+  .topbar nav a.quiet:hover, .topbar nav a.quiet:focus-visible { color: var(--accent-ink); }
+  .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; }
+  .chip:hover, .chip:focus-visible { background: #F2C560; }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
+
+  header { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 9px; display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--brass);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul, ol { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
+           color: var(--muted); font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  small.fine, .fine { color: var(--muted); font-size: 15px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+
+  /* ---------- calculator ---------- */
+  .tool { background: var(--surface); border: 1px solid var(--hair); border-radius: 16px;
+    padding: 24px 20px; }
+  .tool-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: var(--accent-ink); margin: 0 0 14px; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .field label { display: block; font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  input, select, button { font: inherit; color: inherit; }
+  .field input {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--hair); border-radius: 10px;
+    background: var(--bg); color: var(--ink); font-size: 17px; font-variant-numeric: tabular-nums;
+  }
+  #rules { display: grid; gap: 12px; margin: 14px 0; }
+  .rule-row { display: grid; grid-template-columns: 96px 1fr 38px; gap: 8px 10px; align-items: center; }
+  .rule-row .r-name { grid-column: 1 / -1; }
+  .rule-row input, .rule-row select {
+    padding: 9px 10px; border: 1px solid var(--hair); border-radius: 10px;
+    background: var(--bg); color: var(--ink); font-size: 16px; min-width: 0; width: 100%;
+  }
+  .r-pct-wrap { display: flex; align-items: center; gap: 6px; }
+  .r-pct-wrap input { font-variant-numeric: tabular-nums; }
+  .r-pct-wrap span { color: var(--muted); font-weight: 700; }
+  .r-del { background: none; border: 1px solid var(--hair); border-radius: 10px;
+    color: var(--muted); cursor: pointer; font-size: 18px; line-height: 1; height: 40px; }
+  .r-del:hover, .r-del:focus-visible { color: var(--head); border-color: var(--head); }
+  .add-rule { width: 100%; padding: 10px; background: none; cursor: pointer;
+    border: 1px dashed var(--hair); border-radius: 10px; color: var(--accent-ink); font-weight: 700; }
+  .add-rule:hover:not(:disabled), .add-rule:focus-visible { border-color: var(--brass); }
+  .add-rule:disabled { opacity: 0.4; cursor: default; }
+
+  /* results ledger — always the night check, both schemes */
+  .results { background: #1A1516; border-radius: 16px; padding: 22px 24px; margin-top: 20px; }
+  .results-title { font-size: 13px; font-weight: 700; letter-spacing: 2.4px; text-transform: uppercase;
+    color: #B8B0A8; text-align: center; margin: 0 0 14px; }
+  .ledger-row { display: flex; align-items: baseline; gap: 12px;
+    font-size: 18px; font-weight: 500; padding: 7px 0; color: #CFC7BF; }
+  .ledger-row .dots { flex: 1; border-bottom: 2px dotted #4A4244; transform: translateY(-5px); }
+  .ledger-row .val { font-weight: 700; white-space: nowrap; color: #F6F1E9;
+    font-variant-numeric: tabular-nums; }
+  .ledger-row.out .val { color: #D98B6C; }
+  .ledger-row.total { font-weight: 700; padding-top: 12px; color: #F6F1E9; }
+  .ledger-row.total .val { color: var(--brass); }
+  .truerate { margin-top: 16px; padding-top: 16px; border-top: 1px solid #322C2E; text-align: center; }
+  .truerate .label { font-size: 13px; font-weight: 700; letter-spacing: 2.4px;
+    text-transform: uppercase; color: #B8B0A8; }
+  .truerate .fig { font-size: clamp(40px, 10vw, 52px); font-weight: 800; color: var(--brass);
+    letter-spacing: -1px; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .truerate .per { font-size: 15px; color: #B8B0A8; }
+  .noscript-note { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--hair);
+    border-radius: 10px; color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+  <nav aria-label="Site">
+    <a class="quiet" href="./#rate">Features</a>
+    <a class="quiet" href="./#privacy">Privacy</a>
+    <a class="quiet" href="./#pricing">Pricing</a>
+    <a class="quiet" href="guides">Guides</a>
+    <a class="quiet" href="support">Support</a>
+    <a class="chip" href="./#pricing">Get TipBud</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<main id="main">
+
+<header>
+  <div class="rule"></div>
+  <h1>Tip-Out Calculator</h1>
+  <p class="lede">Enter your tips, sales, and hours. See each tip-out in dollars, what you <strong>take home</strong>, and your <strong>True Rate</strong> — your real hourly, wages and tips combined, after tip-outs. Everything runs in your browser; nothing is saved or sent.</p>
+</header>
+
+<form id="calc" class="tool" novalidate>
+  <p class="tool-eyebrow">Your night</p>
+  <div class="fields">
+    <div class="field">
+      <label for="tips">Total tips ($)</label>
+      <input id="tips" type="number" min="0" step="0.01" inputmode="decimal" placeholder="220">
+    </div>
+    <div class="field">
+      <label for="sales">Total sales ($)</label>
+      <input id="sales" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1400">
+    </div>
+    <div class="field">
+      <label for="hours">Hours worked</label>
+      <input id="hours" type="number" min="0" step="0.25" inputmode="decimal" placeholder="7">
+    </div>
+    <div class="field">
+      <label for="wage">Hourly wage ($)</label>
+      <input id="wage" type="number" min="0" step="0.01" inputmode="decimal" value="7.25">
+    </div>
+  </div>
+
+  <p class="tool-eyebrow" style="margin-top:22px" id="rules-label">Tip-out rules</p>
+  <div id="rules" aria-labelledby="rules-label"></div>
+  <button type="button" class="add-rule" id="add-rule">+ Add a tip-out rule</button>
+  <noscript><p class="noscript-note">This calculator needs JavaScript to do the math. Enable JavaScript, or work the steps by hand using the example below — the method is the same.</p></noscript>
+
+  <div class="results">
+    <p class="results-title">The check</p>
+    <div class="ledger-row"><span>Tips</span><span class="dots"></span><span class="val" id="tips-in">$0.00</span></div>
+    <div id="rule-lines"></div>
+    <div class="ledger-row out"><span>Total tip-out</span><span class="dots"></span><span class="val" id="out-total">&minus; $0.00</span></div>
+    <div class="ledger-row total"><span>Take-home tips</span><span class="dots"></span><span class="val" id="take-home">$0.00</span></div>
+    <div class="truerate" aria-live="polite">
+      <p class="label">True Rate</p>
+      <p class="fig" id="true-rate">$0.00</p>
+      <p class="per">per hour — (wage &times; hours + tips &minus; tip-outs) &divide; hours</p>
+    </div>
+  </div>
+</form>
+
+<h2>How tip-outs work</h2>
+<p>A tip-out is the share of a night that a server or bartender passes to the rest of the crew — typically bussers, food runners, barbacks, the service bar, and sometimes hosts or expo. It is how the tips a guest leaves one person reach everyone who touched the table.</p>
+<p>Houses calculate it one of two ways:</p>
+<ul>
+  <li><strong>Percent of sales.</strong> You owe a fixed cut of what you sold — say 2% of your food sales to the busser — no matter what you were actually tipped. This is the more common system in full-service restaurants because it is simple to check against the POS.</li>
+  <li><strong>Percent of tips.</strong> You pass along a share of what you actually made — say 10% of your tips to the bar. This scales with the night, so a slow shift costs you less.</li>
+</ul>
+<p>The difference matters most on a bad night: a sales-based tip-out stays the same even when a table stiffs you, so it eats a bigger share of a small tip pile. The calculator above handles both — set each rule's basis to match your house.</p>
+
+<h2>Typical tip-out percentages</h2>
+<p>Common ranges, not rules — every house sets its own, and yours may fall outside these. Your tip-out sheet or manager is the authority.</p>
+<ul>
+  <li><strong>Busser</strong> — 1–3% of sales</li>
+  <li><strong>Bartender / service bar</strong> — 1–2% of sales, or 5–10% of tips</li>
+  <li><strong>Food runner</strong> — 0.5–2% of sales</li>
+  <li><strong>Host</strong> — 0.5–1% of sales, where hosts are tipped out at all</li>
+  <li><strong>All roles combined</strong> — often lands between 3% and 6% of sales in a full-service restaurant, which can be 20–30% of a typical tip night</li>
+</ul>
+<p class="fine">Some houses tip out on liquor sales only, food sales only, or net of comps and voids — that changes the math, so check what "sales" means on your sheet.</p>
+
+<h2>Tip-out math, step by step</h2>
+<p>Say you made <strong>$220 in tips</strong> on <strong>$1,400 in sales</strong> over a <strong>7-hour</strong> shift at a <strong>$7.25</strong> hourly wage, with the default rules above.</p>
+<ol>
+  <li><strong>Each rule, in dollars.</strong> Busser: 2% of $1,400 = <strong>$28.00</strong>. Bar: 1.5% of $1,400 = <strong>$21.00</strong>. Runner: 1% of $1,400 = <strong>$14.00</strong>. (A percent-of-tips rule would use $220 as the base instead.)</li>
+  <li><strong>Total tip-out.</strong> $28 + $21 + $14 = <strong>$63.00</strong> — that is 4.5% of sales, or about 29% of your tips.</li>
+  <li><strong>Take-home tips.</strong> $220 &minus; $63 = <strong>$157.00</strong>.</li>
+  <li><strong>True Rate.</strong> ($7.25 &times; 7 + $157) &divide; 7 = $207.75 &divide; 7 = <strong>$29.68 per hour</strong> — what the night actually paid you, wages and tips together, after tip-outs.</li>
+</ol>
+
+<h2>Tip-out questions, answered</h2>
+
+<h3>Is tip-out based on sales or on tips?</h3>
+<p class="a">It depends on the house. Percent of sales is the more common system in full-service restaurants — you owe a fixed cut of what you sold regardless of what you were tipped. Percent of tips scales with what you actually made. Check your tip-out sheet or ask a manager; this calculator handles either basis per rule.</p>
+
+<h3>Do I still owe the full tip-out on a bad tip night?</h3>
+<p class="a">Under a percent-of-sales system, usually yes — the tip-out is figured from your sales, so a table that stiffs you still generates a tip-out on its check. That is the standard criticism of sales-based tip-outs. Some houses cap the tip-out at a share of tips on rough nights, but that is house policy, not a legal requirement, so ask before you count on it.</p>
+
+<h3>Can a manager or the house keep part of the tip-out?</h3>
+<p class="a">Not under US federal law. The Fair Labor Standards Act bars owners, managers, and supervisors from keeping any portion of employees' tips, including through a tip pool. Tip-outs to non-managerial coworkers — bussers, runners, barbacks, bartenders — are legal. Some states add stricter rules on top.</p>
+
+<h3>Does tip-out change what I report for taxes?</h3>
+<p class="a">You report the tips you keep, not the tips you were handed. Money you tip out to coworkers is not your income — the IRS expects a daily record of tips received and tips paid out to others, and you report the net. The coworker who receives the tip-out reports it as theirs. Keep the record; it is what supports your number.</p>
+
+<div class="contact">
+  <h2>Doing this every night?</h2>
+  <p>TipBud runs your tip-out rules automatically. Log tips, sales, and hours in about ten seconds and every shift shows your take-home and True Rate — no math at closing time, and your whole history stays on your phone. <a href="./">See how TipBud works</a>.</p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="guides">Guides</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is tip-out based on sales or on tips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the house. Percent of sales is the more common system in full-service restaurants — you owe a fixed cut of what you sold regardless of what you were tipped. Percent of tips scales with what you actually made. Check your tip-out sheet or ask a manager." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I still owe the full tip-out on a bad tip night?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Under a percent-of-sales system, usually yes — the tip-out is figured from your sales, so a table that stiffs you still generates a tip-out on its check. Some houses cap the tip-out at a share of tips on rough nights, but that is house policy, not a legal requirement." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a manager or the house keep part of the tip-out?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not under US federal law. The Fair Labor Standards Act bars owners, managers, and supervisors from keeping any portion of employees' tips, including through a tip pool. Tip-outs to non-managerial coworkers such as bussers, runners, barbacks, and bartenders are legal. Some states add stricter rules." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does tip-out change what I report for taxes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You report the tips you keep, not the tips you were handed. Money you tip out to coworkers is not your income — the IRS expects a daily record of tips received and tips paid out to others, and you report the net. The coworker who receives the tip-out reports it as theirs." }
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var form = document.getElementById("calc");
+  var rulesEl = document.getElementById("rules");
+  var addBtn = document.getElementById("add-rule");
+  var MAX_RULES = 3;
+  var PRESETS = [
+    { name: "Busser", pct: 2,   basis: "sales" },
+    { name: "Bar",    pct: 1.5, basis: "sales" },
+    { name: "Runner", pct: 1,   basis: "sales" }
+  ];
+
+  function money(n) {
+    return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function val(id) {
+    var n = parseFloat(document.getElementById(id).value);
+    return isFinite(n) && n >= 0 ? n : 0;
+  }
+
+  function makeRule(preset) {
+    var row = document.createElement("div");
+    row.className = "rule-row";
+    row.innerHTML =
+      '<input class="r-name" type="text" aria-label="Role name">' +
+      '<div class="r-pct-wrap"><input class="r-pct" type="number" min="0" max="100" step="0.25"' +
+      ' inputmode="decimal" aria-label="Tip-out percent"><span aria-hidden="true">%</span></div>' +
+      '<select class="r-basis" aria-label="Percent of sales or percent of tips">' +
+      '<option value="sales">of sales</option><option value="tips">of tips</option></select>' +
+      '<button type="button" class="r-del" aria-label="Remove this rule">&#215;</button>';
+    row.querySelector(".r-name").value = preset.name;
+    row.querySelector(".r-pct").value = preset.pct;
+    row.querySelector(".r-basis").value = preset.basis;
+    return row;
+  }
+
+  function update() {
+    var tips = val("tips"), sales = val("sales"), hours = val("hours"), wage = val("wage");
+    var lines = document.getElementById("rule-lines");
+    var totalOut = 0;
+    lines.textContent = "";
+    rulesEl.querySelectorAll(".rule-row").forEach(function (row) {
+      var name = row.querySelector(".r-name").value.trim() || "Tip-out";
+      var pct = parseFloat(row.querySelector(".r-pct").value) || 0;
+      var basis = row.querySelector(".r-basis").value;
+      var amount = (pct / 100) * (basis === "tips" ? tips : sales);
+      totalOut += amount;
+      var line = document.createElement("div");
+      line.className = "ledger-row out";
+      line.innerHTML = '<span class="lab"></span><span class="dots"></span><span class="val"></span>';
+      line.querySelector(".lab").textContent = name + " · " + pct + "% of " + basis;
+      line.querySelector(".val").textContent = "− " + money(amount);
+      lines.appendChild(line);
+    });
+    var takeHome = tips - totalOut;
+    var rate = hours > 0 ? (wage * hours + takeHome) / hours : 0;
+    document.getElementById("tips-in").textContent = money(tips);
+    document.getElementById("out-total").textContent = "− " + money(totalOut);
+    document.getElementById("take-home").textContent = money(takeHome);
+    document.getElementById("true-rate").textContent = money(rate);
+    addBtn.disabled = rulesEl.querySelectorAll(".rule-row").length >= MAX_RULES;
+  }
+
+  addBtn.addEventListener("click", function () {
+    var count = rulesEl.querySelectorAll(".rule-row").length;
+    if (count >= MAX_RULES) return;
+    rulesEl.appendChild(makeRule(PRESETS[count] || { name: "Other", pct: 1, basis: "tips" }));
+    update();
+  });
+  rulesEl.addEventListener("click", function (e) {
+    var del = e.target.closest ? e.target.closest(".r-del") : null;
+    if (!del) return;
+    del.closest(".rule-row").remove();
+    update();
+  });
+  form.addEventListener("input", update);
+  form.addEventListener("change", update);
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+
+  PRESETS.forEach(function (p) { rulesEl.appendChild(makeRule(p)); });
+  update();
+})();
+</script>
+</body>
+</html>

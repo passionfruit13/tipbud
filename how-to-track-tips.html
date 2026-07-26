@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Keep Track of Tips: Server's Guide (App vs Spreadsheet) | TipBud</title>
+<meta name="description" content="How to keep track of tips as a server or bartender: the seven things to log every shift, notebook vs spreadsheet vs app, the real-hourly formula, and the daily tip record U.S. federal rules expect.">
+<style>
+@font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
+  font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TipBud">
+<meta property="og:title" content="How to keep track of your tips — server's guide">
+<meta property="og:description" content="What to log every shift, notebook vs spreadsheet vs app, the real-hourly formula, and the daily tip record U.S. federal rules expect.">
+<meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
+<meta property="og:url" content="https://tipbud.app/how-to-track-tips">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://tipbud.app/how-to-track-tips">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<style>
+  :root {
+    --oxblood: #8E1F2C;
+    --brass: #E8B54B;
+    --bg: #F6F1E9;
+    --ink: #1A1516;
+    --body: #3D3630;
+    --muted: #6B5F55;
+    --surface: #FFFFFF;
+    --hair: #E7DDCF;
+    --head: #8E1F2C;       /* headings / links */
+    --accent-ink: #7D5810; /* eyebrows on light */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121011;
+      --ink: #F6F1E9;
+      --body: #CFC7BF;
+      --muted: #B8B0A8;
+      --surface: #1C191A;
+      --hair: #322C2E;
+      --head: #DA6470;
+      --accent-ink: #E8B54B;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Archivo", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 28px 24px 72px; }
+  .topbar { border-top: 6px solid var(--oxblood); }
+  .topbar-inner { max-width: 680px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .topbar nav { display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 500; }
+  .topbar nav a.quiet { color: var(--muted); text-decoration: none; padding: 10px 0; }
+  .topbar nav a.quiet:hover, .topbar nav a.quiet:focus-visible { color: var(--accent-ink); }
+  .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
+    border-radius: 999px; text-decoration: none; }
+  .chip:hover, .chip:focus-visible { background: #F2C560; }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
+
+  header { margin-bottom: 44px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 9px; display: block; }
+  .brand .word { font-weight: 800; font-size: 25px; letter-spacing: -0.5px; color: var(--ink); }
+  .rule { width: 56px; height: 4px; background: var(--brass); margin: 16px 0 26px; border-radius: 2px; }
+  h1 { font-weight: 800; font-size: clamp(32px, 7vw, 40px); line-height: 1.1; letter-spacing: -0.8px; }
+  .date { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  .lede { color: var(--muted); font-size: 18px; margin-top: 14px; }
+  .lede strong { color: var(--accent-ink); font-weight: 700; }
+  h2 { font-weight: 800; font-size: 26px; letter-spacing: -0.5px; line-height: 1.15;
+       color: var(--head); margin: 52px 0 10px; }
+  h2::before { content: ""; display: block; width: 40px; height: 3px; background: var(--brass);
+       border-radius: 2px; margin-bottom: 12px; }
+  .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
+  h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
+  p, li { margin: 8px 0; color: var(--body); }
+  ul { padding-left: 22px; }
+  li strong { color: var(--ink); }
+  .a { color: var(--body); }
+  .path { font-weight: 700; color: var(--head); white-space: nowrap; }
+  a { color: var(--head); text-decoration-color: var(--brass); text-underline-offset: 3px; }
+  .contact {
+    margin-top: 56px; padding: 24px 26px; background: var(--surface); border-radius: 16px;
+    border: 1px solid var(--hair);
+  }
+  .contact h2 { margin-top: 0; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--hair);
+           color: var(--muted); font-size: 14px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 24px; flex-wrap: wrap; }
+  .footer-tag { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  footer nav { display: flex; gap: 18px; font-size: 15px; }
+  footer nav a { color: var(--muted); text-decoration: none; padding: 10px 0; display: inline-block; }
+  footer nav a:hover, footer nav a:focus-visible { color: var(--accent-ink); }
+  .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  small.fine { color: var(--muted); }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
+    color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the IRS make me keep a daily tip record?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under U.S. federal rules, yes. IRS Publication 531 expects a daily record of your tips — date, cash tips, card tips, and what you paid out to other workers — kept the day you earn them, with Form 4070A as the model layout. A notebook, spreadsheet, or app all satisfy it, as long as the record is daily. This is general information, not tax advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to report cash tips?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under U.S. federal rules, yes — cash tips are taxable income, the same as card tips. If your tips reach $20 or more in a month at one job, you report them to your employer by the 10th of the following month, per IRS Tax Topic 761. This is general information, not tax advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the easiest way to log tips after a shift?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whichever method you'll still be using in month three. Log the same night you work — seven numbers: date, hours, cash tips, card tips, sales, tip-out, take-home. A notebook works if you never miss a night; a spreadsheet adds math; an app removes the friction by pre-filling and computing tip-outs for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I record every shift — cash vs card, sales, tip-out, hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All of them: cash tips and card tips separately, your sales, your tip-out, and your hours. Cash and card stay separate because they hit your pocket differently; sales let you sanity-check tip percentage and sales-based tip-outs; tip-outs and hours are what turn a pile of tips into your real hourly rate."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+  <nav aria-label="Site">
+    <a class="quiet" href="./#rate">Features</a>
+    <a class="quiet" href="./#privacy">Privacy</a>
+    <a class="quiet" href="./#pricing">Pricing</a>
+    <a class="quiet" href="guides">Guides</a>
+    <a class="quiet" href="support">Support</a>
+    <a class="chip" href="./#pricing">Get TipBud</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+<main id="main">
+
+<header>
+  <div class="rule"></div>
+  <h1>How to Keep Track of Your Tips</h1>
+  <p class="date">Updated July 2026 · Notebook vs spreadsheet vs app, plus the U.S. federal record rules</p>
+  <p class="lede">A wad of cash at the end of a shift feels like an answer. It isn't — not until you know what you <strong>took home</strong> after tip-outs, per hour. Here's what to write down, three ways to do it, and the record U.S. federal rules expect you to keep anyway.</p>
+</header>
+
+<h2>Why track at all</h2>
+<p>Three reasons, in order of how fast they pay off.</p>
+<ul>
+  <li><strong>Your real hourly.</strong> $200 in tips means nothing by itself. $200 minus a $40 tip-out, plus wages, over 8 hours is a number you can compare — against last week, against the day job you're wondering about, against the bar across the street.</li>
+  <li><strong>Your best shifts.</strong> A month of logged shifts tells you which nights, sections, and doubles actually pay. Most people who start tracking find their gut was wrong about at least one weekday. That's schedule leverage you didn't have before.</li>
+  <li><strong>U.S. federal tax records.</strong> The IRS already expects a daily tip record from tipped workers — <a href="https://www.irs.gov/publications/p531">Publication 531</a> describes it. Since the <a href="tip-deduction">U.S. federal tip deduction</a> (2025–2028) only counts tips you properly reported, that record now has money attached. Not tax advice — details with your preparer.</li>
+</ul>
+
+<h2>What to log every shift</h2>
+<p>Five fields, every shift, no exceptions:</p>
+<ul>
+  <li><strong>Cash tips</strong> — counted before they scatter into your wallet.</li>
+  <li><strong>Card tips</strong> — from your checkout slip or payroll, kept separate from cash because they arrive differently and get reported differently.</li>
+  <li><strong>Sales</strong> — your total rung sales. This is what lets you sanity-check your tip percentage and any sales-based tip-out.</li>
+  <li><strong>Tip-out</strong> — everything you passed to busser, bar, runner, host. If you're not sure your tip-out is normal, the <a href="tip-out-guide">tip-out guide</a> has the published ranges.</li>
+  <li><strong>Hours</strong> — clock-in to clock-out. Without hours there is no hourly.</li>
+</ul>
+<p>Log the same night you work. A number written down at 1 a.m. is a fact; a number reconstructed on Sunday is a guess, and a guess reconstructed in April is exactly what a tax record is supposed to prevent.</p>
+
+<h2>Method 1: a notebook</h2>
+<p>The oldest system and still a legitimate one. A small notebook in your apron, one line per shift.</p>
+<p><strong>Pros:</strong> free, zero setup, nothing to charge, and it fully satisfies the U.S. federal daily-record expectation — the IRS does not care about your file format.</p>
+<p><strong>Cons:</strong> it can't do math. No running totals, no averages by weekday, no real hourly without a calculator. It also lives in an apron that goes through a lot, and there's no backup. Notebooks are how most people start and why most people eventually switch.</p>
+
+<h2>Method 2: a tip tracker spreadsheet</h2>
+<p>A spreadsheet fixes the math problem. One row per shift, one column per field, and formulas do the totals. You don't need a template — you need seven columns. Copy this row into Google Sheets, Numbers, or Excel as your header:</p>
+
+<div class="contact">
+  <h2>Tip tracker spreadsheet columns</h2>
+  <p><strong>Date, Hours, Cash tips, Card tips, Sales, Tip-out, Take-home</strong></p>
+  <p><small class="fine">Make Take-home a formula: Cash tips + Card tips − Tip-out. Add a wages column if you want the row to show your full real hourly rather than tips-only.</small></p>
+</div>
+
+<p>Then one summary row at the bottom: total take-home divided by total hours. That single cell — your real hourly — is the whole reason the sheet exists.</p>
+<p><strong>Pros:</strong> free, flexible, exportable, and your preparer will happily take it at tax time.</p>
+<p><strong>Cons:</strong> the friction is real. Opening a spreadsheet on a phone at 1 a.m. and typing into the right row is exactly the kind of small chore that stops happening in week three. Sales-based tip-outs also mean re-entering your house percentages as formulas and keeping them updated. Spreadsheets reward the disciplined and quietly lose everyone else.</p>
+
+<h2>Method 3: an app</h2>
+<p>A tip tracker app is the spreadsheet with the friction removed. The good ones do three things: make the nightly log fast enough that you actually do it, compute tip-outs from your house rules instead of making you remember them, and turn the history into answers — real hourly, best days, cash vs card — without you building a single formula.</p>
+<p>What to look for, whichever app you pick: works offline (walk-ins have bad Wi-Fi), exports CSV (your data should never be hostage), and an honest price. Subscriptions for a notebook-replacement are a hard sell over a career of shifts.</p>
+
+<h2>Your real hourly: the formula</h2>
+<p>Whatever method you use, this is the number to compute:</p>
+<p><strong>(tips − tip-outs + wages) ÷ hours worked</strong></p>
+<p>Example: $160 cash + $90 card = $250 in tips. Tip out $45. Hourly wage $5.00 over an 8-hour shift = $40 in wages. ($250 − $45 + $40) ÷ 8 = <strong>$30.63 an hour</strong>. That's your take home per hour — in TipBud it's called your True Rate, and it's the honest version of "how much do you make."</p>
+<p>Run it per shift, not just per week. The per-shift version is what shows you that Tuesday nights are quietly paying $19 an hour while Sunday brunch pays $34. If tip-out math is the part you dread, the <a href="tip-out-calculator">tip-out calculator</a> does that step for free in the browser.</p>
+
+<h2>U.S. federal record-keeping FAQ</h2>
+<p>These answers are U.S. federal general information, not tax advice — confirm your situation with your tax preparer.</p>
+
+<h3>Does the IRS make me keep a daily tip record?</h3>
+<p class="a">Yes. <a href="https://www.irs.gov/publications/p531">IRS Publication 531</a> expects a daily record of your tips — date, cash tips, card tips, and what you paid out to other workers — kept the day you earn them. <a href="https://www.irs.gov/forms-pubs/about-form-4070-a">Form 4070A</a> is the model layout. A notebook, spreadsheet, or app all satisfy it, as long as the record is actually daily.</p>
+
+<h3>Do I have to report cash tips?</h3>
+<p class="a">Yes — under U.S. federal rules cash tips are taxable income, same as card tips. If your tips reach $20 or more in a month at one job, you report them to your employer by the 10th of the following month, per <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761</a>. Reporting them is also what makes them count for the <a href="tip-deduction">tip deduction</a>.</p>
+
+<h3>What's the easiest way to log tips after a shift?</h3>
+<p class="a">Whichever one you'll still be using in month three. Log the same night, seven numbers: date, hours, cash, card, sales, tip-out, take-home. Notebook if you never miss a night; spreadsheet if you want the math; app if you want the log to take ten seconds.</p>
+
+<h3>Do I report tips before or after tip-outs?</h3>
+<p class="a">After. Under U.S. federal rules you record what you paid out to other workers and report your tips net of tip-outs — you're taxed on what you kept (<a href="https://www.irs.gov/publications/p531">Publication 531</a>). The <a href="tip-out-guide">tip-out guide</a> covers how those amounts typically work.</p>
+
+<h2>If you want the app version</h2>
+<p><a href="./">TipBud</a> is the ten-second version of everything above. Log a shift the night you work it — it pre-fills your usual numbers, computes tip-outs from your house rules, and shows your True Rate on every shift and every week. Daily record for U.S. federal purposes, CSV export for your preparer, works offline, and it's $19.99 once — no subscription. Your first 30 shifts are the trial, nothing held back.</p>
+
+<div class="contact">
+  <h2>Sources</h2>
+  <p><a href="https://www.irs.gov/publications/p531">IRS Publication 531: Reporting Tip Income</a> · <a href="https://www.irs.gov/forms-pubs/about-form-4070-a">IRS: About Form 4070A, Employee's Daily Record of Tips</a> · <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761: Tips — Withholding and Reporting</a></p>
+  <p><small class="fine">Tax mentions on this page are U.S. federal general information, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="guides">Guides</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
+
+</div>
+</body>
+</html>
