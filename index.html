@@ -104,14 +104,18 @@
   .cta-row { margin-top: 34px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
   /* LAUNCH DAY: replace href="#get" with the App Store URL, keep the id. */
   .cta {
-    display: inline-block; background: var(--brass); color: var(--night);
+    display: inline-block; color: var(--night);
+    background: linear-gradient(180deg, #F4C868, var(--brass) 55%, #D9A339);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(125,88,16,.35), 0 2px 6px rgba(0,0,0,.25);
     font-weight: 800; font-size: 17px; text-decoration: none;
     padding: 16px 30px; border-radius: 999px;
   }
   @media (prefers-reduced-motion: no-preference) {
     .cta { transition: transform 120ms ease, background 120ms ease; }
   }
-  .cta:hover, .cta:focus-visible { background: #F2C560; transform: translateY(-1px); }
+  .cta:hover, .cta:focus-visible { background: linear-gradient(180deg, #F8D27E, #F2C560 55%, #E2AC41);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.60), inset 0 -1px 0 rgba(125,88,16,.30), 0 6px 16px rgba(0,0,0,.28); }
   .cta-fine { color: var(--muted-dark); font-size: 14px; }
   /* Realistic device frame: titanium band via layered ring shadows, side buttons via
      pseudo-elements. The scroll video keeps the sim's real status bar + Dynamic Island,
@@ -122,7 +126,7 @@
       inset 0 0 0 2px #454549,
       0 0 0 3px #1b1b1e,
       0 0 0 4.5px #56565b,
-      0 42px 90px rgba(0,0,0,0.55);
+      0 2px 5px rgba(0,0,0,.35), 0 14px 28px rgba(0,0,0,.35), 0 48px 96px -16px rgba(0,0,0,.55);
     max-width: 380px; margin: 0 auto;
   }
   .phone > img, .phone > video { border-radius: 43px; width: 100%; height: auto; display: block; }
@@ -181,7 +185,7 @@
       inset 0 0 0 2px #3d3d42,
       0 0 0 3px #1b1b1e,
       0 0 0 4.5px #4c4c51,
-      0 30px 60px rgba(26,21,22,0.28);
+      0 2px 5px rgba(26,21,22,.16), 0 12px 24px rgba(26,21,22,.20), 0 36px 72px -18px rgba(26,21,22,.35);
   }
 
   /* ---------- survives band ---------- */
@@ -263,7 +267,7 @@
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after { content: "+"; color: var(--brass-ink); font-size: 22px; font-weight: 500; }
-  .faq details[open] summary::after { content: "−"; }
+  .faq details[open] summary::after { rotate: 45deg; }
   .faq details p { color: #3D3630; padding-bottom: 18px; max-width: 38em; }
   .faq .more { margin-top: 24px; color: var(--muted-light); }
   .faq .more a { color: var(--oxblood); text-decoration-color: var(--brass); text-underline-offset: 3px; }
@@ -313,10 +317,68 @@
     .chips span { color: #CFC7BF; }
     .faq summary::after { color: var(--brass); }
     .faq .more a { color: #DA6470; }
-    .feature .phone { box-shadow: inset 0 0 0 2px #454549, 0 0 0 3px #1b1b1e,
-                      0 0 0 4.5px #56565b, 0 30px 60px rgba(0,0,0,0.5); }
+    .feature .phone { box-shadow: inset 0 0 0 2px #454549, 0 0 0 3px #1b1b1e, 0 0 0 4.5px #56565b,
+                      0 2px 5px rgba(0,0,0,.4), 0 12px 24px rgba(0,0,0,.4), 0 36px 72px -18px rgba(0,0,0,.6); }
+    .feature .stage { border-color: var(--hairline-dark);
+      background: radial-gradient(120% 80% at 50% 0%, rgba(232,181,75,.10), transparent 62%),
+                  linear-gradient(165deg, #221E1F, #181415); }
+    .features, .tax { border-top-color: rgba(232,181,75,.25); }
     .pricing .eyebrow-ledger .dots { border-color: rgba(246,241,233,0.35); }
   }
+
+
+  /* ---------- design v2: stages, depth, transitions, reveals, polish ---------- */
+  .feature .stage { border-radius: 36px; border: 1px solid var(--hairline-light);
+    padding: clamp(28px,4vw,48px) clamp(16px,3vw,36px);
+    background: radial-gradient(120% 80% at 50% 0%, rgba(232,181,75,.18), transparent 62%),
+                linear-gradient(165deg, #F0E8D8, #E9DEC8); }
+  .feature .stage .phone { margin-inline: auto; rotate: -1.4deg; }
+  .feature.flip .stage .phone { rotate: 1.4deg; }
+
+  .check-band, .privacy, .pricing { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .pricing { background-image: radial-gradient(120% 90% at 50% 0%, rgba(0,0,0,.18), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .hero { position: relative; }
+  .hero::before { content:""; position:absolute; top:0; right:-8%; width:min(60vw,760px); aspect-ratio:1;
+    pointer-events:none; background: radial-gradient(closest-side, rgba(232,181,75,.16), rgba(142,31,44,.08) 48%, transparent 72%); }
+  .hero-grid { position: relative; }
+
+  .features, .tax { position: relative; border-top: 1px solid rgba(232,181,75,.55); }
+  .features::before, .tax::before { content:""; position:absolute; inset:0 0 auto; height:110px;
+    pointer-events:none; background: linear-gradient(180deg, rgba(142,31,44,.05), transparent); }
+  .privacy, .pricing, footer { border-top: 1px solid rgba(232,181,75,.40); }
+  .privacy { position: relative; }
+  .privacy::before { content:""; position:absolute; inset:0 0 auto; height:120px; pointer-events:none;
+    background: linear-gradient(180deg, rgba(0,0,0,.35), transparent); }
+
+  .check-clock { color: var(--brass); max-width: 280px; margin: 0 auto 26px; justify-content: center; }
+  .check-clock .dots, .privacy-clock .dots { border-color: #4A4244; }
+  .privacy-clock { color: var(--brass); margin-bottom: 12px; }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .feature .feature-copy, .pillar, .check .ledger-row { animation: reveal-up linear both;
+        animation-timeline: view(); animation-range: entry 8% entry 42%; }
+      .feature .stage { animation: reveal-stage linear both;
+        animation-timeline: view(); animation-range: entry 5% entry 40%; }
+      @keyframes reveal-up   { from { opacity:0; transform: translateY(22px); } }
+      @keyframes reveal-stage{ from { opacity:0; transform: translateY(34px) scale(.975); } }
+    }
+  }
+
+  .chips span { transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease; }
+  .chips span:hover { border-color: var(--brass); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(26,21,22,.08); }
+  .faq summary::after { transition: rotate 200ms ease; }
+  .faq details::details-content { block-size: 0; opacity: 0; overflow-y: clip;
+    transition: block-size 260ms ease, opacity 260ms ease, content-visibility 260ms allow-discrete; }
+  .faq details[open]::details-content { block-size: auto; opacity: 1; }
+  @supports (interpolate-size: allow-keywords) { .faq { interpolate-size: allow-keywords; } }
+  @media (prefers-reduced-motion: reduce) { .faq summary::after, .faq details::details-content { transition: none; } }
+  .privacy-rows .ledger-row, .check .ledger-row { transition: background-color 120ms ease;
+    padding-inline: 10px; margin-inline: -10px; border-radius: 6px; }
+  .privacy-rows .ledger-row:hover { background-color: rgba(232,181,75,.07); }
+  .check .ledger-row:hover { background-color: rgba(232,181,75,.05); }
 
   /* ---------- responsive ---------- */
   @media (max-width: 900px) {
@@ -382,7 +444,7 @@
 <section class="check-band" aria-label="How TipBud closes out a night">
   <div class="container">
     <div class="check">
-      <p class="check-title">Last night, closed out</p>
+      <p class="eyebrow-ledger check-clock"><span>11:58 PM</span><span class="dots"></span><span>Clocked out</span></p>
       <div class="ledger-row money"><span>Cash</span><span class="dots"></span><span class="val">$88.66</span></div>
       <div class="ledger-row money"><span>Card</span><span class="dots"></span><span class="val">$329.00</span></div>
       <div class="ledger-row money out"><span>Tip-out<span class="rule-note"> — busser 2%, bar 1.5%</span></span><span class="dots"></span><span class="val">−$83.31</span></div>
@@ -397,66 +459,66 @@
 
     <div class="feature" id="home-knows-you">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Your home</span><span class="dots"></span><span>Knows you</span></p>
+        <p class="eyebrow-ledger"><span>11:59 PM</span><span class="dots"></span><span>Greeted by name</span></p>
         <h2>A home screen that knows your week</h2>
         <p>It greets you by name, shows last night's take-home with cash, card, and tip-out broken out, your trailing week, and your month pace — <strong>"On pace for about $5,050 this month."</strong></p>
         <p>It even knows what your best weekday actually pays, from your own history.</p>
       </div>
-      <div class="phone"><img src="img/home.webp" width="900" height="1840" loading="lazy"
-        alt="TipBud home screen: Good afternoon, Matilda — last night $334.35 took home, $53.62 an hour, with cash, card, and tip-out broken out."></div>
+      <div class="stage"><div class="phone"><img src="img/home.webp" width="900" height="1840" loading="lazy"
+        alt="TipBud home screen: Good afternoon, Matilda — last night $334.35 took home, $53.62 an hour, with cash, card, and tip-out broken out."></div></div>
     </div>
 
     <div class="feature flip" id="log">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Logging</span><span class="dots"></span><span>~10 sec</span></p>
+        <p class="eyebrow-ledger"><span>12:00 AM</span><span class="dots"></span><span>Logged in ten seconds</span></p>
         <h2>Logged before you're out the door</h2>
         <p>Cash, card, sales, hours — and TipBud pre-fills your usual Saturday from your own history, so most nights you just fix the numbers and hit Save.</p>
         <p>Tip-outs are computed from your rules. <strong>Busser 2%, bar 1.5%?</strong> Set it once per job and every shift does the math for you.</p>
       </div>
-      <div class="phone"><img src="img/log.webp" width="760" height="1553" loading="lazy"
-        alt="TipBud log shift sheet with job, date, start and end times filled in, and a note that fields were pre-filled from your last 8 Saturdays."></div>
+      <div class="stage"><div class="phone"><img src="img/log.webp" width="760" height="1553" loading="lazy"
+        alt="TipBud log shift sheet with job, date, start and end times filled in, and a note that fields were pre-filled from your last 8 Saturdays."></div></div>
     </div>
 
     <div class="feature" id="rate">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Your rate</span><span class="dots"></span><span class="money">$53.62/hr</span></p>
+        <p class="eyebrow-ledger"><span>Next morning</span><span class="dots"></span><span class="money">$53.62/hr</span></p>
         <h2>Your True Rate</h2>
         <p>Wages + tips − tip-outs, divided by the hours you actually worked. Per shift, per week, per month — the number your paycheck never tells you.</p>
         <p>It's how you compare a slow Tuesday double against a slammed Friday close, and know which one was actually worth it.</p>
       </div>
-      <div class="phone"><img src="img/rate.webp" width="760" height="1553" loading="lazy"
-        alt="TipBud shift detail with the hourly rate hero: $53.62 per hour."></div>
+      <div class="stage"><div class="phone"><img src="img/rate.webp" width="760" height="1553" loading="lazy"
+        alt="TipBud shift detail with the hourly rate hero: $53.62 per hour."></div></div>
     </div>
 
     <div class="feature flip" id="calendar">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Your month</span><span class="dots"></span><span>Night by night</span></p>
+        <p class="eyebrow-ledger"><span>Two weeks in</span><span class="dots"></span><span>The month fills in</span></p>
         <h2>The whole month on one screen</h2>
         <p>Every shift on a calendar with the night's take-home under the date. Tap any day for the full breakdown; switch to weeks when that's how your brain works.</p>
       </div>
-      <div class="phone"><img src="img/calendar.webp" width="760" height="1553" loading="lazy"
-        alt="TipBud Shifts tab: July on a month calendar with each worked night's dollars under the date, $4,055.54 total."></div>
+      <div class="stage"><div class="phone"><img src="img/calendar.webp" width="760" height="1553" loading="lazy"
+        alt="TipBud Shifts tab: July on a month calendar with each worked night's dollars under the date, $4,055.54 total."></div></div>
     </div>
 
     <div class="feature" id="insights">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Fridays</span><span class="dots"></span><span>≈ 2× Tuesdays</span></p>
+        <p class="eyebrow-ledger"><span>Week four</span><span class="dots"></span><span>The pattern shows</span></p>
         <h2>See which nights actually pay</h2>
         <p>Day-of-week averages, an eight-week trend, cash vs card, personal bests. TipBud reads your history and says things like <strong>"Your Fridays are worth about double your Tuesdays."</strong> Pick up shifts accordingly.</p>
         <p>Optional heads-up notifications, computed on your phone from your own numbers — off by default, always.</p>
       </div>
-      <div class="phone"><img src="img/insights.webp" width="760" height="1553" loading="lazy"
-        alt="TipBud Insights: last 7 days and this month summaries, tips over the last 8 weeks, and average tips by day with Friday the clear peak."></div>
+      <div class="stage"><div class="phone"><img src="img/insights.webp" width="760" height="1553" loading="lazy"
+        alt="TipBud Insights: last 7 days and this month summaries, tips over the last 8 weeks, and average tips by day with Friday the clear peak."></div></div>
     </div>
 
     <div class="feature flip" id="share">
       <div class="feature-copy">
-        <p class="eyebrow-ledger"><span>Sharing</span><span class="dots"></span><span>$ optional</span></p>
+        <p class="eyebrow-ledger"><span>One big Friday</span><span class="dots"></span><span>Worth sharing</span></p>
         <h2>Share the night, dollars optional</h2>
         <p>A clean card for the group chat. Show the numbers when it was a great night — or flip on <strong>$ hidden</strong> and share the shape of the night without the dollars.</p>
       </div>
-      <div class="phone"><img src="img/share.webp" width="760" height="1553" loading="lazy"
-        alt="TipBud share sheet: a dark card reading Friday Jul 24, $334.35 took home, with a $-hidden toggle and Share button."></div>
+      <div class="stage"><div class="phone"><img src="img/share.webp" width="760" height="1553" loading="lazy"
+        alt="TipBud share sheet: a dark card reading Friday Jul 24, $334.35 took home, with a $-hidden toggle and Share button."></div></div>
     </div>
 
   </div>
@@ -465,6 +527,7 @@
 <section class="survives">
   <div class="container">
     <div class="survives-inner">
+      <p class="eyebrow-ledger"><span>Month three</span><span class="dots"></span><span>New phone, same history</span></p>
       <h2>A history that survives anything</h2>
       <p>Lost phones, dead batteries, switched apps — the #1 way tip trackers break hearts is losing the record. TipBud is built so yours survives.</p>
       <div class="pillars">
@@ -487,6 +550,7 @@
 
 <section class="privacy" id="privacy">
   <div class="container">
+    <p class="eyebrow-ledger privacy-clock"><span>Every night</span><span class="dots"></span><span>Nobody watching</span></p>
     <h2>Your income is <em>your business.</em></h2>
     <p class="lead">TipBud is built so we cannot see your data — there is nothing to breach, sell, or subpoena from us. On the App Store that reads simply: Data Not Collected.</p>
     <div class="privacy-rows money">
@@ -502,6 +566,7 @@
 <section class="tax">
   <div class="container tax-grid">
     <div>
+      <p class="eyebrow-ledger"><span>April</span><span class="dots"></span><span>Already sorted</span></p>
       <h2>Tax season, already sorted</h2>
       <p>The U.S. federal tip deduction (2025–2028) rewards one habit: a daily tip log. TipBud keeps exactly the record the IRS expects, and exports it as a clean CSV whenever your preparer asks.</p>
       <p class="fine">TipBud isn't tax advice — it's the paperwork, handled. <a href="tip-deduction">Read the full guide to the U.S. tip deduction</a>.</p>
@@ -528,7 +593,7 @@
 <section class="maker">
   <div class="container">
     <div class="maker-inner">
-      <p class="eyebrow-ledger"><span>The business</span><span class="dots"></span><span>One person</span></p>
+      <p class="eyebrow-ledger"><span>Year after year</span><span class="dots"></span><span>One person</span></p>
       <h2>A one-person business</h2>
       <p>Hi — I'm Shakti. TipBud has no investors, no growth team, and no ads to sell. You pay once, I never see your numbers, and your history stays viewable and exportable whether you ever buy or not.</p>
       <p>That's the whole business model: build a tool tipped workers keep, charge for it once, keep it working.</p>
@@ -538,6 +603,7 @@
 
 <section class="faq">
   <div class="container">
+    <p class="eyebrow-ledger"><span>Before you buy</span><span class="dots"></span><span>Fair questions</span></p>
     <h2>Fair questions</h2>
     <div class="faq-list">
       <details>
@@ -565,7 +631,7 @@
   <div class="container">
     <h2 class="close-head">Made for closing time.</h2>
     <p class="close-line">Count the drawer, log the shift, go home knowing.</p>
-    <p class="eyebrow-ledger"><span>The price</span><span class="dots"></span><span>Once</span></p>
+    <p class="eyebrow-ledger"><span>Last call</span><span class="dots"></span><span>Once</span></p>
     <p class="price money">$19.99<small>, once.</small></p>
     <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
     <!-- LAUNCH DAY: replace this form with an App Store badge link. -->
