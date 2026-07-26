@@ -227,7 +227,17 @@
   .price small { font-size: 0.42em; letter-spacing: -0.5px; vertical-align: 18%; }
   .pricing .terms { color: #F0C9A8; max-width: 36em; margin: 26px auto 0; }
   .pricing .terms strong { color: var(--cream); }
-  .pricing .cta { margin-top: 36px; }
+  .pricing .cta { margin-top: 0; }
+  .join { margin-top: 36px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .join input[type="email"] {
+    font: inherit; font-size: 16px; color: var(--cream);
+    background: rgba(0,0,0,0.25); border: 1.5px solid rgba(246,241,233,0.35);
+    border-radius: 999px; padding: 15px 24px; min-width: 260px;
+  }
+  .join input[type="email"]::placeholder { color: rgba(246,241,233,0.55); }
+  .join input[type="email"]:focus { border-color: var(--brass); outline: none; }
+  .hp { position: absolute; left: -9999px; height: 0; width: 0; opacity: 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .pricing .anchor-line { color: rgba(246,241,233,0.75); font-size: 15px; margin-top: 22px; }
 
   /* ---------- FAQ ---------- */
@@ -506,8 +516,14 @@
     <p class="eyebrow-ledger"><span>The price</span><span class="dots"></span><span>Once</span></p>
     <p class="price money">$19.99<small>, once.</small></p>
     <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
-    <!-- LAUNCH DAY: replace this href with the App Store URL. -->
-    <a class="cta" href="mailto:shakti.thakran@outlook.com?subject=Tell%20me%20when%20TipBud%20launches">Coming soon — get launch email</a>
+    <!-- LAUNCH DAY: replace this form with an App Store badge link. -->
+    <form class="join" action="https://tipbud.app/api/subscribe" method="post">
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="sr" for="join-email">Email address</label>
+      <input id="join-email" name="email" type="email" required autocomplete="email"
+             placeholder="you@example.com">
+      <button class="cta" type="submit">Email me on launch day</button>
+    </form>
     <p class="anchor-line">Most tip trackers charge every year. This is once.</p>
   </div>
 </section>
