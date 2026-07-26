@@ -114,6 +114,24 @@
   tr:last-child td { border-bottom: none; }
 
   small.fine { color: var(--muted); }
+  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover, .crumbs a:focus-visible { color: var(--accent-ink); }
+  .crumbs [aria-current] { color: var(--accent-ink); font-weight: 600; }
+  .appcta { margin: 26px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; }
+  .appcta p { margin: 0; }
+  .appcta .chip { white-space: nowrap; }
+  .pager { display: grid; gap: 12px; margin-top: 56px; }
+  @media (min-width: 560px) { .pager { grid-template-columns: 1fr 1fr; } }
+  .pager a { display: block; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; text-decoration: none; }
+  .pager a:hover, .pager a:focus-visible { border-color: var(--brass); }
+  .pager .lab { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .pager strong { color: var(--ink); letter-spacing: -0.2px; }
+  .pager .desc { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
   .skip { position: absolute; left: -9999px; }
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
@@ -193,6 +211,8 @@
 <div class="wrap">
 <main id="main">
 
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> <span aria-hidden="true">&rsaquo;</span> <a href="guides">Guides</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Tip-Outs, Explained</span></nav>
+
 <header>
   <div class="rule"></div>
   <h1>How Tip Outs Work: Who Tips Out Whom, and How Much</h1>
@@ -238,6 +258,11 @@
 <p><strong>Managers and owners can't take tips.</strong> Under the Fair Labor Standards Act, managers, supervisors, and owners may not keep any portion of employees' tips — not through a tip pool, not through a tip out, not directly. The <a href="https://www.dol.gov/agencies/whd/flsa/tips">U.S. Department of Labor's FLSA tip rules</a> spell this out, and its Wage and Hour Division takes complaints. A manager who covers a section as a server for a shift is a narrow exception for tips they earned on their own tables; skimming the pool is not.</p>
 <p><strong>You're taxed on what you kept, not what passed through.</strong> Under U.S. federal rules, <a href="https://www.irs.gov/publications/p531">IRS Publication 531</a> has you keep a daily tip record that includes what you paid out to other workers, and you report your tips <em>net of tip-outs</em>. Tip out $40 of a $200 night and $160 is your reportable number. That's also why the tip-out column in your records matters at tax time — the <a href="tip-deduction">U.S. federal tip deduction</a> only works from tips you reported. Not tax advice — confirm the details with your tax preparer.</p>
 
+<div class="appcta">
+  <p>TipBud stores your house tip-out rules once and does this math on every shift you log.</p>
+  <a class="chip" href="./#pricing">Get TipBud</a>
+</div>
+
 <h2>Common questions</h2>
 
 <h3 id="what-is-a-standard-tip-out-percentage">What is a standard tip out percentage?</h3>
@@ -276,12 +301,19 @@
 <h2>Do the math in seconds</h2>
 <p>Policies are percentages; your night is dollars. The <a href="tip-out-calculator">TipBud tip-out calculator</a> turns your house rules into an actual take-home number for any shift — free, in the browser, no sign-up.</p>
 <p>And if you'd rather stop doing this math by hand at 1 a.m.: <a href="./">TipBud</a> is an iPhone tip tracker that stores your tip-out rules once, computes them on every shift you log, and shows your True Rate — wages plus tips minus tip-outs, per hour. One $19.99 purchase, no subscription, works offline. The <a href="how-to-track-tips">tracking guide</a> shows what it logs and why.</p>
+  <p><a class="chip" href="./#pricing">Get TipBud for iPhone</a></p>
 
 <div class="contact">
   <h2>Sources</h2>
   <p><a href="https://www.7shifts.com/blog/restaurant-tipping-out-guide/">7shifts: Restaurant Tip Outs — Methods, Payouts, FAQ</a> · <a href="https://www.joinhomebase.com/blog/tipping-out">Homebase: Tipping Out — How It Works, Standard Percentages &amp; Laws</a> · <a href="https://kickfin.com/blog/tip-pooling-tip-sharing-tipping-out-how-and-why-restaurants-split-tips/">Kickfin: Tip Pooling, Tip Sharing &amp; Tipping Out</a> · <a href="https://pos.toasttab.com/blog/on-the-line/tip-out">Toast: Understanding Tip Out Meaning</a> · <a href="https://www.restaurantbusinessonline.com/advice-guy/standard-tip-out-percentages">Restaurant Business: Standard tip out percentages</a> · <a href="https://www.dol.gov/agencies/whd/flsa/tips">U.S. Department of Labor: FLSA Tip Regulations</a> · <a href="https://www.irs.gov/publications/p531">IRS Publication 531: Reporting Tip Income</a></p>
   <p><small class="fine">Percentages above are published ranges, not rules — every house differs. Tax mentions are U.S. federal general information, not tax or legal advice; confirm your situation with your tax preparer.</small></p>
 </div>
+
+
+<nav class="pager" aria-label="More free tools and guides">
+  <a href="guides"><span class="lab">All resources</span><strong>Free tip tools &amp; guides</strong><span class="desc">Calculators, the template, and every guide in one place.</span></a>
+  <a href="tips-per-hour-calculator"><span class="lab">Next up</span><strong>Tips Per Hour Calculator</strong><span class="desc">What a shift really paid you per hour, after tip-outs.</span></a>
+</nav>
 
 </main>
 
@@ -304,5 +336,11 @@
 </footer>
 
 </div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://tipbud.app/"},
+ {"@type":"ListItem","position":2,"name":"Guides","item":"https://tipbud.app/guides"},
+ {"@type":"ListItem","position":3,"name":"Tip-Outs, Explained"}]}
+</script>
 </body>
 </html>

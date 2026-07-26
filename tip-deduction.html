@@ -105,6 +105,24 @@
   .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
 
   small.fine { color: var(--muted); }
+  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover, .crumbs a:focus-visible { color: var(--accent-ink); }
+  .crumbs [aria-current] { color: var(--accent-ink); font-weight: 600; }
+  .appcta { margin: 26px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; }
+  .appcta p { margin: 0; }
+  .appcta .chip { white-space: nowrap; }
+  .pager { display: grid; gap: 12px; margin-top: 56px; }
+  @media (min-width: 560px) { .pager { grid-template-columns: 1fr 1fr; } }
+  .pager a { display: block; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; text-decoration: none; }
+  .pager a:hover, .pager a:focus-visible { border-color: var(--brass); }
+  .pager .lab { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .pager strong { color: var(--ink); letter-spacing: -0.2px; }
+  .pager .desc { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
   .skip { position: absolute; left: -9999px; }
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
@@ -192,6 +210,8 @@
 <div class="wrap">
 <main id="main">
 
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> <span aria-hidden="true">&rsaquo;</span> <a href="guides">Guides</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">No Tax on Tips: the Tip Deduction</span></nav>
+
 <header>
   <div class="rule"></div>
   <h1>No Tax on Tips: the U.S. federal tip deduction, explained</h1>
@@ -224,6 +244,11 @@
 <p>The deduction leans on rules that already existed: under U.S. federal law you report tips of <strong>$20 or more in a month</strong> to your employer by the 10th of the following month, and the IRS expects you to keep a <strong>daily tip record</strong> — date, cash tips, card tips, and what you paid out to bussers, bar, or runners. <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761</a> covers the reporting rules; Publication 531 describes the daily record itself.</p>
 <p>The daily part matters. A number reconstructed in April from memory is exactly what the record is supposed to prevent. Written down the night you took it home, it's just a fact.</p>
 <p>This is what TipBud is for, if you want an app for it: it logs each shift the night you work it — cash tips, card tips, and tip-outs, dated — and <span class="path">Export CSV…</span> turns the whole year into one spreadsheet for your preparer. It works offline and the log stays on your phone. A paper notebook satisfies the IRS just as well; the only rule is that you actually keep it daily.</p>
+
+<div class="appcta">
+  <p>TipBud keeps the daily record this deduction depends on — dated, offline, exportable as one CSV.</p>
+  <a class="chip" href="./#pricing">Get TipBud</a>
+</div>
 
 <h2>What to hand your preparer</h2>
 <ul>
@@ -269,6 +294,12 @@
   <p><small class="fine">This page is general information about U.S. federal tax law, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
 </div>
 
+
+<nav class="pager" aria-label="More free tools and guides">
+  <a href="guides"><span class="lab">All resources</span><strong>Free tip tools &amp; guides</strong><span class="desc">Calculators, the template, and every guide in one place.</span></a>
+  <a href="how-to-track-tips"><span class="lab">Next up</span><strong>How to Track Your Tips</strong><span class="desc">The daily record the deduction depends on, three ways to keep it.</span></a>
+</nav>
+
 </main>
 
 <footer>
@@ -290,5 +321,11 @@
 </footer>
 
 </div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://tipbud.app/"},
+ {"@type":"ListItem","position":2,"name":"Guides","item":"https://tipbud.app/guides"},
+ {"@type":"ListItem","position":3,"name":"No Tax on Tips: the Tip Deduction"}]}
+</script>
 </body>
 </html>

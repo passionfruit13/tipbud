@@ -105,6 +105,24 @@
   .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
 
   small.fine { color: var(--muted); }
+  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover, .crumbs a:focus-visible { color: var(--accent-ink); }
+  .crumbs [aria-current] { color: var(--accent-ink); font-weight: 600; }
+  .appcta { margin: 26px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; }
+  .appcta p { margin: 0; }
+  .appcta .chip { white-space: nowrap; }
+  .pager { display: grid; gap: 12px; margin-top: 56px; }
+  @media (min-width: 560px) { .pager { grid-template-columns: 1fr 1fr; } }
+  .pager a { display: block; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; text-decoration: none; }
+  .pager a:hover, .pager a:focus-visible { border-color: var(--brass); }
+  .pager .lab { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .pager strong { color: var(--ink); letter-spacing: -0.2px; }
+  .pager .desc { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
   .skip { position: absolute; left: -9999px; }
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
@@ -184,6 +202,8 @@
 <div class="wrap">
 <main id="main">
 
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> <span aria-hidden="true">&rsaquo;</span> <a href="guides">Guides</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">How to Track Your Tips</span></nav>
+
 <header>
   <div class="rule"></div>
   <h1>How to Keep Track of Your Tips</h1>
@@ -232,6 +252,11 @@
 <p>A tip tracker app is the spreadsheet with the friction removed. The good ones do three things: make the nightly log fast enough that you actually do it, compute tip-outs from your house rules instead of making you remember them, and turn the history into answers — real hourly, best days, cash vs card — without you building a single formula.</p>
 <p>What to look for, whichever app you pick: works offline (walk-ins have bad Wi-Fi), exports CSV (your data should never be hostage), and an honest price. Subscriptions for a notebook-replacement are a hard sell over a career of shifts.</p>
 
+<div class="appcta">
+  <p>TipBud logs a shift in about ten seconds — tip-outs and True Rate included, no formulas to build.</p>
+  <a class="chip" href="./#pricing">Get TipBud</a>
+</div>
+
 <h2>Your real hourly: the formula</h2>
 <p>Whatever method you use, this is the number to compute:</p>
 <p><strong>(tips − tip-outs + wages) ÷ hours worked</strong></p>
@@ -274,12 +299,19 @@
 
 <h2>If you want the app version</h2>
 <p><a href="./">TipBud</a> is the ten-second version of everything above. Log a shift the night you work it — it pre-fills your usual numbers, computes tip-outs from your house rules, and shows your True Rate on every shift and every week. Daily record for U.S. federal purposes, CSV export for your preparer, works offline, and it's $19.99 once — no subscription. Your first 30 shifts are the trial, nothing held back.</p>
+  <p><a class="chip" href="./#pricing">Get TipBud for iPhone</a></p>
 
 <div class="contact">
   <h2>Sources</h2>
   <p><a href="https://www.irs.gov/publications/p531">IRS Publication 531: Reporting Tip Income</a> · <a href="https://www.irs.gov/forms-pubs/about-form-4070-a">IRS: About Form 4070A, Employee's Daily Record of Tips</a> · <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761: Tips — Withholding and Reporting</a></p>
   <p><small class="fine">Tax mentions on this page are U.S. federal general information, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
 </div>
+
+
+<nav class="pager" aria-label="More free tools and guides">
+  <a href="guides"><span class="lab">All resources</span><strong>Free tip tools &amp; guides</strong><span class="desc">Calculators, the template, and every guide in one place.</span></a>
+  <a href="tip-tracker-template"><span class="lab">Next up</span><strong>Free Tip Tracker Template</strong><span class="desc">Nine columns, two formulas — copy it or download the CSV.</span></a>
+</nav>
 
 </main>
 
@@ -302,5 +334,11 @@
 </footer>
 
 </div>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://tipbud.app/"},
+ {"@type":"ListItem","position":2,"name":"Guides","item":"https://tipbud.app/guides"},
+ {"@type":"ListItem","position":3,"name":"How to Track Your Tips"}]}
+</script>
 </body>
 </html>

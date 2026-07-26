@@ -128,6 +128,24 @@
   .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
 
   small.fine { color: var(--muted); }
+  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover, .crumbs a:focus-visible { color: var(--accent-ink); }
+  .crumbs [aria-current] { color: var(--accent-ink); font-weight: 600; }
+  .appcta { margin: 26px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; }
+  .appcta p { margin: 0; }
+  .appcta .chip { white-space: nowrap; }
+  .pager { display: grid; gap: 12px; margin-top: 56px; }
+  @media (min-width: 560px) { .pager { grid-template-columns: 1fr 1fr; } }
+  .pager a { display: block; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; text-decoration: none; }
+  .pager a:hover, .pager a:focus-visible { border-color: var(--brass); }
+  .pager .lab { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .pager strong { color: var(--ink); letter-spacing: -0.2px; }
+  .pager .desc { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
   .skip { position: absolute; left: -9999px; }
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
@@ -199,6 +217,8 @@
 <div class="wrap">
 <main id="main">
 
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> <span aria-hidden="true">&rsaquo;</span> <a href="guides">Guides</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Tip Tracker Template</span></nav>
+
 <header>
   <div class="rule"></div>
   <h1>Free Tip Tracker Spreadsheet Template</h1>
@@ -249,6 +269,11 @@
   <small class="fine">tip-tracker-template.csv · under 1 KB</small>
 </div>
 
+<div class="appcta">
+  <p>Rather skip the formulas? TipBud is this sheet with the friction removed — tip-outs computed for you.</p>
+  <a class="chip" href="./#pricing">Get TipBud</a>
+</div>
+
 <h2>How to use it</h2>
 <p>One row per shift, filled in the night you work it. That is the whole system — about 30 seconds once the sheet is set up.</p>
 <ul>
@@ -281,6 +306,7 @@
 <div class="contact">
   <h2>If the sheet stops happening</h2>
   <p><a href="./">TipBud</a> is this spreadsheet with the friction removed. Logging a shift takes about ten seconds — it pre-fills your usual numbers, computes tip-outs from your house rules, handles multiple jobs, and backs up privately to iCloud. Your daily record for U.S. federal purposes, with CSV export any time, so your data is never stuck. One $19.99 purchase, no subscription; your first 30 shifts are the trial.</p>
+  <p><a class="chip" href="./#pricing">Get TipBud for iPhone</a></p>
 </div>
 
 <h2>Tip tracker template FAQ</h2>
@@ -312,6 +338,12 @@
   <p><a href="https://www.irs.gov/publications/p531">IRS Publication 531: Reporting Tip Income</a> · <a href="https://www.irs.gov/forms-pubs/about-form-4070-a">IRS: About Form 4070A, Employee's Daily Record of Tips</a> · <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761: Tips — Withholding and Reporting</a></p>
   <p><small class="fine">Tax mentions on this page are U.S. federal general information, not tax advice. Rules change and your situation is your own — confirm details with your tax preparer.</small></p>
 </div>
+
+
+<nav class="pager" aria-label="More free tools and guides">
+  <a href="guides"><span class="lab">All resources</span><strong>Free tip tools &amp; guides</strong><span class="desc">Calculators, the template, and every guide in one place.</span></a>
+  <a href="no-tax-on-tips-calculator"><span class="lab">Next up</span><strong>No Tax on Tips Calculator</strong><span class="desc">What the 2025–2028 federal tip deduction could be worth to you.</span></a>
+</nav>
 
 </main>
 
@@ -347,6 +379,12 @@ document.getElementById("copy").addEventListener("click", async function () {
   }
   setTimeout(function () { btn.textContent = "Copy"; }, 2000);
 });
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://tipbud.app/"},
+ {"@type":"ListItem","position":2,"name":"Guides","item":"https://tipbud.app/guides"},
+ {"@type":"ListItem","position":3,"name":"Tip Tracker Template"}]}
 </script>
 </body>
 </html>

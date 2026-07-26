@@ -103,6 +103,24 @@
   .footer-legal { color: var(--muted); font-size: 13px; margin-top: 28px; }
 
   small.fine, .fine { color: var(--muted); font-size: 15px; }
+  .crumbs { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+  .crumbs a { color: var(--muted); }
+  .crumbs a:hover, .crumbs a:focus-visible { color: var(--accent-ink); }
+  .crumbs [aria-current] { color: var(--accent-ink); font-weight: 600; }
+  .appcta { margin: 26px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; }
+  .appcta p { margin: 0; }
+  .appcta .chip { white-space: nowrap; }
+  .pager { display: grid; gap: 12px; margin-top: 56px; }
+  @media (min-width: 560px) { .pager { grid-template-columns: 1fr 1fr; } }
+  .pager a { display: block; padding: 16px 20px; background: var(--surface); border: 1px solid var(--hair);
+    border-radius: 14px; text-decoration: none; }
+  .pager a:hover, .pager a:focus-visible { border-color: var(--brass); }
+  .pager .lab { display: block; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-ink); }
+  .pager strong { color: var(--ink); letter-spacing: -0.2px; }
+  .pager .desc { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
   .skip { position: absolute; left: -9999px; }
   .skip:focus { left: 16px; top: 16px; position: fixed; z-index: 10; background: var(--brass);
     color: #121011; padding: 10px 16px; border-radius: 999px; font-weight: 700; text-decoration: none; }
@@ -177,6 +195,8 @@
 <div class="wrap">
 <main id="main">
 
+<nav class="crumbs" aria-label="Breadcrumb"><a href="./">Home</a> <span aria-hidden="true">&rsaquo;</span> <a href="guides">Guides</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Tip-Out Calculator</span></nav>
+
 <header>
   <div class="rule"></div>
   <h1>Tip-Out Calculator</h1>
@@ -222,6 +242,11 @@
     </div>
   </div>
 </form>
+
+<div class="appcta">
+  <p>TipBud runs these tip-out rules on every shift you log — take-home and True Rate, automatically.</p>
+  <a class="chip" href="./#pricing">Get TipBud</a>
+</div>
 
 <h2>How tip-outs work</h2>
 <p>A tip-out is the share of a night that a server or bartender passes to the rest of the crew — typically bussers, food runners, barbacks, the service bar, and sometimes hosts or expo. It is how the tips a guest leaves one person reach everyone who touched the table.</p>
@@ -275,7 +300,14 @@
 <div class="contact">
   <h2>Doing this every night?</h2>
   <p>TipBud runs your tip-out rules automatically. Log tips, sales, and hours in about ten seconds and every shift shows your take-home and True Rate — no math at closing time, and your whole history stays on your phone. <a href="./">See how TipBud works</a>.</p>
+  <p><a class="chip" href="./#pricing">Get TipBud for iPhone</a></p>
 </div>
+
+
+<nav class="pager" aria-label="More free tools and guides">
+  <a href="guides"><span class="lab">All resources</span><strong>Free tip tools &amp; guides</strong><span class="desc">Calculators, the template, and every guide in one place.</span></a>
+  <a href="tip-out-guide"><span class="lab">Next up</span><strong>Tip-Outs, Explained</strong><span class="desc">Typical percentages by role, and whether yours is out of line.</span></a>
+</nav>
 
 </main>
 
@@ -421,6 +453,12 @@
   PRESETS.forEach(function (p) { rulesEl.appendChild(makeRule(p)); });
   update();
 })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://tipbud.app/"},
+ {"@type":"ListItem","position":2,"name":"Guides","item":"https://tipbud.app/guides"},
+ {"@type":"ListItem","position":3,"name":"Tip-Out Calculator"}]}
 </script>
 </body>
 </html>
