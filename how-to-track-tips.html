@@ -84,7 +84,7 @@
   .contact h2 { font-size: 20px; }  .contact h2::before { display: none; }
   h3 { font-weight: 700; font-size: 19px; margin: 30px 0 6px; letter-spacing: -0.2px; }
   p, li { margin: 8px 0; color: var(--body); }
-  ul { padding-left: 22px; }
+  ul, ol { padding-left: 22px; }
   li strong { color: var(--ink); }
   .a { color: var(--body); }
   .path { font-weight: 700; color: var(--head); white-space: nowrap; }
@@ -133,18 +133,34 @@
     },
     {
       "@type": "Question",
-      "name": "What's the easiest way to log tips after a shift?",
+      "name": "How do servers keep track of tips?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Whichever method you'll still be using in month three. Log the same night you work — seven numbers: date, hours, cash tips, card tips, sales, tip-out, take-home. A notebook works if you never miss a night; a spreadsheet adds math; an app removes the friction by pre-filling and computing tip-outs for you."
+        "text": "Most servers log tips right after every shift: record the date, hours, cash tips, card tips, sales, and tip-outs, then total them weekly. The IRS expects a daily tip record (Form 4070A). Use a notebook, a spreadsheet, or a tip-tracker app that does the math automatically. Steps: 1. Log the same night you work. 2. Record date, hours, cash tips, and card tips. 3. Add sales and what you tipped out. 4. Total take-home: cash plus card minus tip-outs. 5. Divide by hours for your real hourly rate. 6. Total the week and keep the daily record."
       }
     },
     {
       "@type": "Question",
-      "name": "What should I record every shift — cash vs card, sales, tip-out, hours?",
+      "name": "How do you report tips as a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "All of them: cash tips and card tips separately, your sales, your tip-out, and your hours. Cash and card stay separate because they hit your pocket differently; sales let you sanity-check tip percentage and sales-based tip-outs; tip-outs and hours are what turn a pile of tips into your real hourly rate."
+        "text": "Keep a daily tip record, then report tips of $20 or more in a month to your employer by the 10th of the following month. The employer withholds taxes and includes the tips on your W-2 (box 7); tips your employer did not know about go on Form 4137 with your return."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to best track tipped income as a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Track tipped income in one place, daily: record every shift's date, hours, cash tips, card tips, sales, and tip-outs the night you work, and total it weekly. A spreadsheet works if you keep it up; a tip-tracker app removes the friction by pre-filling numbers and computing tip-outs and your hourly automatically. A notebook is free and satisfies the IRS daily-record rule; a spreadsheet adds totals and your hourly formula; an app gives the fastest log, automatic tip-out math, and CSV export."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I report tips before or after tip-outs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After. Under U.S. federal rules you record what you paid out to other workers and report your tips net of tip-outs — you're taxed on what you kept (IRS Publication 531). This is general information, not tax advice."
       }
     }
   ]
@@ -231,8 +247,27 @@
 <h3>Do I have to report cash tips?</h3>
 <p class="a">Yes — under U.S. federal rules cash tips are taxable income, same as card tips. If your tips reach $20 or more in a month at one job, you report them to your employer by the 10th of the following month, per <a href="https://www.irs.gov/taxtopics/tc761">IRS Tax Topic 761</a>. Reporting them is also what makes them count for the <a href="tip-deduction">tip deduction</a>.</p>
 
-<h3>What's the easiest way to log tips after a shift?</h3>
-<p class="a">Whichever one you'll still be using in month three. Log the same night, seven numbers: date, hours, cash, card, sales, tip-out, take-home. Notebook if you never miss a night; spreadsheet if you want the math; app if you want the log to take ten seconds.</p>
+<h3 id="how-do-servers-keep-track-of-tips">How do servers keep track of tips?</h3>
+<p class="a">Most servers log tips right after every shift: record the date, hours, cash tips, card tips, sales, and tip-outs, then total them weekly. The IRS expects a daily tip record (Form 4070A). Use a notebook, a spreadsheet, or a tip-tracker app that does the math automatically.</p>
+<ol>
+  <li>Log the same night you work.</li>
+  <li>Record date, hours, cash tips, and card tips.</li>
+  <li>Add sales and what you tipped out.</li>
+  <li>Total take-home: cash plus card minus tip-outs.</li>
+  <li>Divide by hours for your real hourly rate.</li>
+  <li>Total the week and keep the daily record.</li>
+</ol>
+
+<h3 id="how-do-you-report-tips-as-a-server">How do you report tips as a server?</h3>
+<p class="a">Keep a daily tip record, then report tips of $20 or more in a month to your employer by the 10th of the following month. The employer withholds taxes and includes the tips on your W-2 (box 7); tips your employer did not know about go on Form 4137 with your return.</p>
+
+<h3 id="how-to-best-track-tipped-income-as-a-server">How to best track tipped income as a server?</h3>
+<p class="a">Track tipped income in one place, daily: record every shift's date, hours, cash tips, card tips, sales, and tip-outs the night you work, and total it weekly. A spreadsheet works if you keep it up; a tip-tracker app removes the friction by pre-filling numbers and computing tip-outs and your hourly automatically.</p>
+<ul>
+  <li><strong>Notebook</strong> — free, and it satisfies the IRS daily-record rule.</li>
+  <li><strong>Spreadsheet</strong> — adds totals and your hourly formula; our <a href="tip-tracker-template">free template</a> has the columns ready.</li>
+  <li><strong>App</strong> — fastest log, automatic tip-out math, CSV export.</li>
+</ul>
 
 <h3>Do I report tips before or after tip-outs?</h3>
 <p class="a">After. Under U.S. federal rules you record what you paid out to other workers and report your tips net of tip-outs — you're taxed on what you kept (<a href="https://www.irs.gov/publications/p531">Publication 531</a>). The <a href="tip-out-guide">tip-out guide</a> covers how those amounts typically work.</p>

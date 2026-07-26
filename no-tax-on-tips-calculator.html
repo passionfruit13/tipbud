@@ -169,6 +169,7 @@
   <div class="rule"></div>
   <h1>No Tax on Tips Calculator</h1>
   <p class="lede">For U.S. federal tax years <strong>2025 through 2028</strong>, qualified tipped workers can deduct up to <strong>$25,000</strong> a year of reported tips from federal taxable income. Enter your tips and a marginal rate you choose, and see what the deduction could be worth. Everything runs in your browser; nothing is saved or sent.</p>
+  <p>The formula: estimated savings = qualified tips, capped at $25,000, times your marginal federal rate. Worked example: a server reporting $18,000 in tips in the 12% bracket deducts the full $18,000 and saves about $2,160 in federal income tax. Social Security, Medicare, and any state income tax still apply.</p>
 </header>
 
 <form id="calc" class="tool" novalidate>
@@ -266,14 +267,24 @@
 <h3>Is "no tax on tips" real?</h3>
 <p class="a">Yes — as a U.S. federal income tax deduction for 2025 through 2028, capped at $25,000 a year, not a blanket exemption. Tips are still income, still reported, and still subject to Social Security and Medicare tax; the deduction reduces federal income tax only.</p>
 
-<h3>How much will I save?</h3>
-<p class="a">Roughly your deduction times your marginal federal rate. Someone who reports $18,000 in qualified tips and sits in the 12% bracket would see federal income tax fall by about $2,160. The real figure depends on your full return, which is why this page is an illustration and your preparer has the final word.</p>
+<h3 id="how-do-i-calculate-my-no-tax-on-tips">How do I calculate my no tax on tips?</h3>
+<p class="a">Add up your qualified reported tips for the year, cap the total at $25,000, subtract any income phase-out, and multiply what is left by your marginal federal rate. That product is roughly the federal income tax the deduction saves; the deduction itself is the capped tip total.</p>
+<ol>
+  <li>Total your reported tips for the year.</li>
+  <li>Cap the total at $25,000.</li>
+  <li>Subtract $100 per $1,000 of modified AGI over $150,000 ($300,000 joint).</li>
+  <li>Multiply the remainder by your marginal federal rate.</li>
+</ol>
+
+<h3 id="how-much-will-no-tax-on-tips-save-me">How much will no tax on tips save me?</h3>
+<p class="a">Multiply your qualified tips — up to the $25,000 annual cap — by your marginal federal rate. A server reporting $18,000 in tips in the 12% bracket saves about $2,160. The deduction applies to federal income tax for 2025-2028; Social Security and Medicare taxes still apply.</p>
+<p class="a">The real figure depends on your full return, which is why this page is an illustration and your preparer has the final word.</p>
 
 <h3>Do cash tips count?</h3>
 <p class="a">Yes — cash, card, and tip-pool shares can all qualify, but only if they were properly reported on a W-2, a 1099, or Form 4137. Unreported cash never qualifies, which makes the daily tip record the whole ballgame.</p>
 
-<h3>Does it apply to 2026?</h3>
-<p class="a">Yes. The deduction covers U.S. federal tax years 2025 through 2028. Under current law it expires after 2028 unless Congress extends it.</p>
+<h3 id="what-years-does-no-tax-on-tips-apply-to">What years does no tax on tips apply to?</h3>
+<p class="a">U.S. federal tax years 2025 through 2028. Under current law the deduction expires after 2028 unless Congress extends it.</p>
 
 <h3>Do I still report my tips?</h3>
 <p class="a">Yes, exactly as before — tips of $20 or more in a month go to your employer by the 10th of the following month, and the IRS still expects a daily record. The deduction happens on your tax return, not in your reporting.</p>
@@ -323,18 +334,23 @@
     },
     {
       "@type": "Question",
-      "name": "How much will I save?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Roughly your deduction times your marginal federal rate. Someone who reports $18,000 in qualified tips and sits in the 12% bracket would see federal income tax fall by about $2,160. The real figure depends on your full return — confirm with your tax preparer." }
+      "name": "How do I calculate my no tax on tips?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Add up your qualified reported tips for the year, cap the total at $25,000, subtract any income phase-out, and multiply what is left by your marginal federal rate. That product is roughly the federal income tax the deduction saves; the deduction itself is the capped tip total. Steps: 1. Total your reported tips for the year. 2. Cap the total at $25,000. 3. Subtract $100 per $1,000 of modified AGI over $150,000 ($300,000 joint). 4. Multiply the remainder by your marginal federal rate." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much will no tax on tips save me?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Multiply your qualified tips — up to the $25,000 annual cap — by your marginal federal rate. A server reporting $18,000 in tips in the 12% bracket saves about $2,160. The deduction applies to federal income tax for 2025-2028; Social Security and Medicare taxes still apply. The real figure depends on your full return — confirm with your tax preparer." }
     },
     {
       "@type": "Question",
       "name": "Do cash tips count?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — cash, card, and tip-pool shares can all qualify, but only if they were properly reported on a W-2, a 1099, or Form 4137. Unreported cash never qualifies, which makes the daily tip record essential." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — cash, card, and tip-pool shares can all qualify, but only if they were properly reported on a W-2, a 1099, or Form 4137. Unreported cash never qualifies, which makes the daily tip record the whole ballgame." }
     },
     {
       "@type": "Question",
-      "name": "Does it apply to 2026?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The deduction covers U.S. federal tax years 2025 through 2028. Under current law it expires after 2028 unless Congress extends it." }
+      "name": "What years does no tax on tips apply to?",
+      "acceptedAnswer": { "@type": "Answer", "text": "U.S. federal tax years 2025 through 2028. Under current law the deduction expires after 2028 unless Congress extends it." }
     },
     {
       "@type": "Question",
