@@ -97,6 +97,7 @@
     letter-spacing: -1.5px; margin-top: 18px;
   }
   h1 em { font-style: normal; color: var(--brass); }
+  .beat { font-weight: 700; font-size: 19px; margin-top: 18px; }
   .hero-sub {
     color: var(--muted-dark); font-size: 19px; margin-top: 22px; max-width: 34em;
   }
@@ -218,9 +219,19 @@
     padding: 8px 16px; font-size: 14px; font-weight: 500; color: #3D3630;
   }
 
+  /* ---------- maker's note ---------- */
+  .maker { background: var(--cream); color: var(--ink); padding: 0 0 96px; }
+  .maker-inner { max-width: 680px; margin: 0 auto; border-top: 1px solid var(--hairline-light);
+                 padding-top: 72px; }
+  .maker h2 { font-weight: 800; font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.8px;
+              color: var(--oxblood); margin-top: 14px; }
+  .maker p { color: #3D3630; margin-top: 16px; }
+
   /* ---------- pricing ---------- */
   .pricing { background: var(--oxblood); padding: 110px 0; text-align: center; }
-  .pricing .eyebrow-ledger { margin: 0 auto; color: var(--brass); justify-content: center; max-width: 240px; }
+  .close-head { font-weight: 800; font-size: clamp(34px, 4.4vw, 52px); letter-spacing: -1px; }
+  .close-line { color: #F0C9A8; font-size: 18px; margin-top: 12px; }
+  .pricing .eyebrow-ledger { margin: 44px auto 0; color: var(--brass); justify-content: center; max-width: 240px; }
   .pricing .eyebrow-ledger .dots { border-color: rgba(246,241,233,0.35); }
   .price { font-weight: 800; font-size: clamp(60px, 9vw, 104px); letter-spacing: -2px;
            line-height: 1; margin-top: 26px; }
@@ -288,11 +299,11 @@
 
   /* ---------- dark mode: light sections flip; brand-dark bands stay ---------- */
   @media (prefers-color-scheme: dark) {
-    .features, .survives, .tax, .faq { background: #171415; color: var(--cream); }
-    .feature h2, .survives h2, .tax h2, .included h2, .faq h2 { color: #DA6470; }
-    .feature p, .survives .survives-inner > p, .tax p, .faq details p { color: #CFC7BF; }
+    .features, .survives, .tax, .faq, .maker { background: #171415; color: var(--cream); }
+    .feature h2, .survives h2, .tax h2, .included h2, .faq h2, .maker h2 { color: #DA6470; }
+    .feature p, .survives .survives-inner > p, .tax p, .faq details p, .maker p { color: #CFC7BF; }
     .feature p strong { color: var(--cream); }
-    .feature + .feature, .survives-inner, .faq details,
+    .feature + .feature, .survives-inner, .maker-inner, .faq details,
     .faq details:last-child { border-color: var(--hairline-dark); }
     .eyebrow-ledger { color: var(--brass); }
     .eyebrow-ledger .dots { border-color: #4A4244; }
@@ -349,11 +360,12 @@
     <div>
       <p class="kicker rise">No ads · No account · No subscription</p>
       <h1 class="rise d1">Know what you <em>took home.</em></h1>
-      <p class="hero-sub rise d2">TipBud logs a shift in about ten seconds and shows your true hourly rate — wages + tips − tip-outs. Built for servers, bartenders, and anyone who works for tips.</p>
+      <p class="hero-sub rise d2">TipBud logs a shift in about ten seconds and shows your True Rate — wages + tips − tip-outs, over the hours you actually worked. Built for servers, bartenders, and anyone who works for tips.</p>
+      <p class="beat rise d2">You close out. TipBud does the math.</p>
       <div class="cta-row rise d3">
         <!-- LAUNCH DAY: replace this href with the App Store URL. -->
-        <a class="cta" id="get" href="#pricing">Get TipBud on the App&nbsp;Store</a>
-        <span class="cta-fine">First 30 shifts free · $19.99 once</span>
+        <a class="cta" id="get" href="#pricing">Try your first 30 shifts free</a>
+        <span class="cta-fine">On iPhone · $19.99 once, never a subscription</span>
       </div>
     </div>
     <div class="phone rise d4">
@@ -375,7 +387,7 @@
       <div class="ledger-row money"><span>Card</span><span class="dots"></span><span class="val">$329.00</span></div>
       <div class="ledger-row money out"><span>Tip-out<span class="rule-note"> — busser 2%, bar 1.5%</span></span><span class="dots"></span><span class="val">−$83.31</span></div>
       <div class="ledger-row money total"><span>Took home</span><span class="dots"></span><span class="val">$334.35</span></div>
-      <p class="check-note">That's <strong>$53.62 an hour</strong>, not a guess. TipBud does this math every night.</p>
+      <p class="check-note">That's a True Rate of <strong>$53.62 an hour</strong> — not a guess. TipBud does this math every night.</p>
     </div>
   </div>
 </section>
@@ -408,7 +420,7 @@
     <div class="feature" id="rate">
       <div class="feature-copy">
         <p class="eyebrow-ledger"><span>Your rate</span><span class="dots"></span><span class="money">$53.62/hr</span></p>
-        <h2>Your true hourly rate</h2>
+        <h2>Your True Rate</h2>
         <p>Wages + tips − tip-outs, divided by the hours you actually worked. Per shift, per week, per month — the number your paycheck never tells you.</p>
         <p>It's how you compare a slow Tuesday double against a slammed Friday close, and know which one was actually worth it.</p>
       </div>
@@ -506,25 +518,21 @@
         <span>Light or dark</span>
         <span>Any currency</span>
         <span>Big-text friendly</span>
+        <span>Three backups — iCloud, file, CSV</span>
+        <span>0 accounts · 0 trackers · 0 ads</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pricing" id="pricing">
+<section class="maker">
   <div class="container">
-    <p class="eyebrow-ledger"><span>The price</span><span class="dots"></span><span>Once</span></p>
-    <p class="price money">$19.99<small>, once.</small></p>
-    <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
-    <!-- LAUNCH DAY: replace this form with an App Store badge link. -->
-    <form class="join" action="https://tipbud.app/api/subscribe" method="post">
-      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="sr" for="join-email">Email address</label>
-      <input id="join-email" name="email" type="email" required autocomplete="email"
-             placeholder="you@example.com">
-      <button class="cta" type="submit">Email me on launch day</button>
-    </form>
-    <p class="anchor-line">Most tip trackers charge every year. This is once.</p>
+    <div class="maker-inner">
+      <p class="eyebrow-ledger"><span>The business</span><span class="dots"></span><span>One person</span></p>
+      <h2>A one-person business</h2>
+      <p>Hi — I'm Shakti. TipBud has no investors, no growth team, and no ads to sell. You pay once, I never see your numbers, and your history stays viewable and exportable whether you ever buy or not.</p>
+      <p>That's the whole business model: build a tool tipped workers keep, charge for it once, keep it working.</p>
+    </div>
   </div>
 </section>
 
@@ -553,6 +561,26 @@
   </div>
 </section>
 
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="close-head">Made for closing time.</h2>
+    <p class="close-line">Count the drawer, log the shift, go home knowing.</p>
+    <p class="eyebrow-ledger"><span>The price</span><span class="dots"></span><span>Once</span></p>
+    <p class="price money">$19.99<small>, once.</small></p>
+    <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
+    <!-- LAUNCH DAY: replace this form with an App Store badge link. -->
+    <form class="join" action="https://tipbud.app/api/subscribe" method="post">
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="sr" for="join-email">Email address</label>
+      <input id="join-email" name="email" type="email" required autocomplete="email"
+             placeholder="you@example.com">
+      <button class="cta" type="submit">Email me on launch day</button>
+    </form>
+    <p class="anchor-line">On iPhone · First 30 shifts free · Most tip trackers charge every year — this is once.</p>
+  </div>
+</section>
+
+
 </main>
 
 <footer>
@@ -563,6 +591,7 @@
         <p class="footer-tag">Made for closing time.</p>
       </div>
       <nav aria-label="Footer">
+        <a href="./">Home</a>
         <a href="support">Support</a>
         <a href="privacy">Privacy</a>
         <a href="tip-deduction">Tax guide</a>
@@ -570,7 +599,7 @@
         <a href="mailto:shakti.thakran@outlook.com">Email</a>
       </nav>
     </div>
-    <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+    <p class="footer-legal">© 2026 Shakti Thakran. TipBud is a one-person business, first shipped 2026. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
   </div>
 </footer>
 

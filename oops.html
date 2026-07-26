@@ -6,7 +6,9 @@
 <title>Something went wrong — TipBud</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="img/favicon.png">
-<meta name="theme-color" content="#F6F1E9">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
 <style>
 @font-face { font-family: "Archivo"; font-weight: 100 900; font-stretch: 62% 125%;
   font-display: swap; src: url("fonts/archivo-var.woff2") format("woff2"); }
@@ -27,7 +29,7 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #121011;
-      --ink: #F5EFE9;
+      --ink: #F6F1E9;
       --body: #CFC7BF;
       --muted: #B8B0A8;
       --surface: #1C191A;
@@ -54,7 +56,8 @@
   .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
     border-radius: 999px; text-decoration: none; }
   .chip:hover, .chip:focus-visible { background: #F2C560; }
-  @media (max-width: 640px) { .topbar nav a.quiet { display: none; } }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
 
   header { margin-bottom: 44px; }
   .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
@@ -102,7 +105,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar"><div class="topbar-inner">
-  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="34" height="34"><span class="word">tipbud</span></a>
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
   <nav aria-label="Site">
     <a class="quiet" href="./#rate">Features</a>
     <a class="quiet" href="./#privacy">Privacy</a>
@@ -116,10 +119,28 @@
 <header>
   <div class="rule"></div>
   <h1>That didn't go through.</h1>
-</header>
 <p class="lede">Our signup hiccuped. Try again in a minute, or just email <a href="mailto:shakti.thakran@outlook.com?subject=Tell%20me%20when%20TipBud%20launches"><strong>shakti.thakran@outlook.com</strong></a> with the subject "launch" and you're on the list.</p>
+</header>
 <p style="margin-top:28px"><a href="./">&larr; Back to TipBud</a></p>
 </main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
+      <p class="footer-tag">Made for closing time.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="./">Home</a>
+      <a href="support">Support</a>
+      <a href="privacy">Privacy</a>
+      <a href="tip-deduction">Tax guide</a>
+      <a href="press">Press kit</a>
+      <a href="mailto:shakti.thakran@outlook.com">Email</a>
+    </nav>
+  </div>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
+</footer>
 </div>
 </body>
 </html>

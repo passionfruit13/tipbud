@@ -14,9 +14,11 @@
 <meta property="og:title" content="No tax on tips — the U.S. tip deduction, explained">
 <meta property="og:description" content="Up to $25,000 a year for 2025–2028, who qualifies, the daily tip log the IRS expects, and what to hand your preparer.">
 <meta property="og:image" content="https://tipbud.app/img/og.png">
+<meta property="og:image:alt" content="TipBud — tip tracker for servers and bartenders">
 <meta property="og:url" content="https://tipbud.app/tip-deduction">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F6F1E9">
+<meta name="theme-color" content="#F6F1E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121011" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://tipbud.app/tip-deduction">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -36,7 +38,7 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #121011;
-      --ink: #F5EFE9;
+      --ink: #F6F1E9;
       --body: #CFC7BF;
       --muted: #B8B0A8;
       --surface: #1C191A;
@@ -63,7 +65,8 @@
   .chip { background: var(--brass); color: #121011; font-weight: 700; padding: 9px 18px;
     border-radius: 999px; text-decoration: none; }
   .chip:hover, .chip:focus-visible { background: #F2C560; }
-  @media (max-width: 640px) { .topbar nav a.quiet { display: none; } }
+  @media (max-width: 640px) { .topbar nav a.quiet:not([href="support"]) { display: none; } }
+  @media (max-width: 480px) { .topbar nav a.quiet { display: none; } }
 
   header { margin-bottom: 44px; }
   .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
@@ -151,7 +154,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar"><div class="topbar-inner">
-  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="34" height="34"><span class="word">tipbud</span></a>
+  <a class="brand" href="./"><img class="mark" src="img/mark.png" alt="" width="36" height="36"><span class="word">tipbud</span></a>
   <nav aria-label="Site">
     <a class="quiet" href="./#rate">Features</a>
     <a class="quiet" href="./#privacy">Privacy</a>
@@ -241,7 +244,7 @@
       <a href="mailto:shakti.thakran@outlook.com">Email</a>
     </nav>
   </div>
-  <p class="footer-legal">© 2026 Shakti Thakran</p>
+  <p class="footer-legal">© 2026 Shakti Thakran. Apple, the Apple logo, and App Store are trademarks of Apple Inc.</p>
 </footer>
 
 </div>
