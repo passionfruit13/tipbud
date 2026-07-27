@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TipBud — Tip Tracker App for Servers & Bartenders ($19.99 Once)</title>
 <meta name="description" content="Track cash and card tips, tip-outs, and your real hourly rate. TipBud logs a shift in about ten seconds — for servers and bartenders. No ads, no account, no subscription.">
+<meta name="apple-itunes-app" content="app-id=6792464541">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -22,7 +23,7 @@
  "operatingSystem":"iOS","applicationCategory":"FinanceApplication",
  "description":"Tip tracker for servers and bartenders. Ten-second shift logging, true hourly rate after tip-outs, CSV export for the IRS tip deduction.",
  "offers":{"@type":"Offer","price":"19.99","priceCurrency":"USD"},
- "url":"https://tipbud.app/"}
+ "url":"https://tipbud.app/","installUrl":"https://apps.apple.com/us/app/tipbud-server-tip-tracker/id6792464541","sameAs":["https://apps.apple.com/us/app/tipbud-server-tip-tracker/id6792464541"]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -244,7 +245,7 @@
   .price small { font-size: 0.42em; letter-spacing: -0.5px; vertical-align: 18%; }
   .pricing .terms { color: #F0C9A8; max-width: 36em; margin: 26px auto 0; }
   .pricing .terms strong { color: var(--cream); }
-  .pricing .cta { margin-top: 0; }
+  .pricing .cta { margin-top: 36px; }
   .join { margin-top: 36px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
   .join input[type="email"] {
     font: inherit; font-size: 16px; color: var(--cream);
@@ -413,7 +414,7 @@
       <a class="quiet" href="#pricing">Pricing</a>
       <a class="quiet" href="guides">Guides</a>
     <a class="quiet" href="support">Support</a>
-      <a class="chip" href="#pricing">Get TipBud</a>
+      <a class="chip" href="https://apps.apple.com/us/app/tipbud-server-tip-tracker/id6792464541">Get TipBud</a>
     </nav>
   </div>
 </header>
@@ -428,8 +429,7 @@
       <p class="hero-sub rise d2">TipBud logs a shift in about ten seconds and shows your True Rate — wages + tips − tip-outs, over the hours you actually worked. The tip tracker for servers and bartenders — and anyone who works for tips.</p>
       <p class="beat rise d2">You close out. TipBud does the math.</p>
       <div class="cta-row rise d3">
-        <!-- LAUNCH DAY: replace this href with the App Store URL. -->
-        <a class="cta" id="get" href="#pricing">Try your first 30 shifts free</a>
+        <a class="cta" id="get" href="https://apps.apple.com/us/app/tipbud-server-tip-tracker/id6792464541">Try your first 30 shifts free</a>
         <span class="cta-fine">On iPhone · $19.99 once, never a subscription</span>
       </div>
     </div>
@@ -645,14 +645,7 @@
     <p class="eyebrow-ledger"><span>Last call</span><span class="dots"></span><span>Once</span></p>
     <p class="price money">$19.99<small>, once.</small></p>
     <p class="terms">Your first <strong>30 shifts are free</strong> with every feature on. After that, one purchase — <strong>no subscription, no ads, ever.</strong> And your history stays viewable and exportable even if you never buy.</p>
-    <!-- LAUNCH DAY: replace this form with an App Store badge link. -->
-    <form class="join" action="https://tipbud.app/api/subscribe" method="post">
-      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="sr" for="join-email">Email address</label>
-      <input id="join-email" name="email" type="email" required autocomplete="email"
-             placeholder="you@example.com">
-      <button class="cta" type="submit">Email me on launch day</button>
-    </form>
+    <a class="cta" href="https://apps.apple.com/us/app/tipbud-server-tip-tracker/id6792464541">Download on the App&nbsp;Store</a>
     <p class="anchor-line">On iPhone · First 30 shifts free · Most tip trackers charge every year — this is once.</p>
   </div>
 </section>
